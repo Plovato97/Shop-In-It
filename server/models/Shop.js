@@ -22,12 +22,12 @@ const shopSchema = new Schema(
             type: String,
             required: false
         },
-      products: [
-        {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: 'Product'
-        }
-      ]
+    //   products: [
+    //     {
+    //       type: mongoose.Schema.Types.ObjectId,
+    //       ref: 'Product'
+    //     }
+    //   ]
     }
 )
 
