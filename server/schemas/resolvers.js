@@ -1,38 +1,53 @@
 const { AuthenticationError } = require("apollo-server-express");
-const { User, Shop } = require("../models");
+const { User, Shop, Product, Order } = require("../models");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
     Query: {
         me: async (parent, args, context) => {
             if (context.user) {
-            const userData = await User.findOne({ _id: context.user._id })
-            .select('-__V -password')
-            .populate('shop')
+                const userData = await User.findOne({ _id: context.user._id })
+                    .select('-__V -password')
+                    .populate('shop')
 
-            return userData;
+                return userData;
+            }
+
+            throw new AuthenticationError('Not logged in');
+        },
+        users: async (parent, args, context, info) => {
+            // Query all users
+            const users = await User.find({});
+
+            // Return array of users
+            return users;
+        },
+        shops: async (parent, args, context, info) => {
+            // Query all shops
+            const shops = await Shop.find({});
+
+            // Return array of shops
+            return shops;
+        },
+        user: async (parent, { username }) => {
+            return User.findOne({ username })
+                .select('-__V -password')
+        },
+        product: async (parent, {_id}) => {
+            return Product.findById(_id)
+        },
+        order: async (parent, {_id}, context) => {
+            if (context.user) {
+                const user = await User.findById(context.user._id)
+                    .populate({
+                        path: 'orders.products'
+                    });
+
+                return user.orders.id(_id);
+            }
+            throw new AuthenticationError('Not logged in');
         }
 
-        throw new AuthenticationError('Not logged in');
-    },
-    users: async (parent, args, context, info) => {
-        // Query all users
-        const users = await User.find({});
-        
-        // Return array of users
-        return users;
-      },
-      shops: async (parent, args, context, info) => {
-        // Query all shops
-        const shops = await Shop.find({});
-        
-        // Return array of shops
-        return shops;
-      },
-        user: async (parent, { username }) => {
-        return User.findOne({ username })
-            .select('-__V -password')
-    },
     },
     Mutation: {
         login: async (parent, { email, password }) => {
@@ -49,7 +64,7 @@ const resolvers = {
             const token = signToken(user);
             return { token, user };
         },
-        
+
         addUser: async (parent, args) => {
             const user = await User.create(args);
             const token = signToken(user);
@@ -59,17 +74,27 @@ const resolvers = {
         addShop: async (parent, args, context) => {
             // Retrieve the current logged-in user from the context
             const user = await User.findOne({ _id: context.user._id });
-      
+
             // Create the shop
             const shop = await Shop.create(args);
-      
+
             // Set the `shop` field of the user to the newly created shop
             user.shop = shop;
-      
+
             // Save the user
             await user.save();
-      
+
             return shop;
+        },
+        addOrder: async (parent, {products}, context) => {
+            if (context.user) {
+                const order = new Order({products});
+
+                await User.findByIdAndUpdate(context.user._id, {$push: {orders: order}});
+
+                return order;
+            }
+            throw new AuthenticationError('Not logged in');
         }
     }
 }
