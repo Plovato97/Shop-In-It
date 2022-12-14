@@ -1,5 +1,5 @@
 const { AuthenticationError } = require("apollo-server-express");
-const { User } = require("../models");
+const { User, Shop } = require("../models");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
@@ -44,6 +44,21 @@ const resolvers = {
 
             return { token, user };
         },
+        addShop: async (parent, args, context) => {
+            // Retrieve the current logged-in user from the context
+            const user = await User.findOne({ _id: context.user._id });
+      
+            // Create the shop
+            const shop = await Shop.create(args);
+      
+            // Set the `shop` field of the user to the newly created shop
+            user.shop = shop;
+      
+            // Save the user
+            await user.save();
+      
+            return shop;
+        }
     }
 }
 

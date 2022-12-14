@@ -29,6 +29,8 @@ const shopSchema = new Schema(
     //     }
     //   ]
     }
-)
+);
 
-module.exports = mongoose.model('Shop', shopSchema);
+const Shop = model('Shop', shopSchema);
+
+module.exports = Shop;
