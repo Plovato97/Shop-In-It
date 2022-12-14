@@ -1,21 +1,39 @@
 const { AuthenticationError } = require("apollo-server-express");
-const { User } = require("../models");
+const { User, Shop } = require("../models");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
     Query: {
         me: async (parent, args, context) => {
             if (context.user) {
-                const userData = await User
-                    .findOne({ _id: context.user._id })
-                    .select("-__v -password")
-                
-                return userData;
-            };
-            throw new AuthenticationError("You must be logged in!");
-    }, 
-    },
+            const userData = await User.findOne({ _id: context.user._id })
+            .select('-__V -password')
+            .populate('shop')
 
+            return userData;
+        }
+
+        throw new AuthenticationError('Not logged in');
+    },
+    users: async (parent, args, context, info) => {
+        // Query all users
+        const users = await User.find({});
+        
+        // Return array of users
+        return users;
+      },
+      shops: async (parent, args, context, info) => {
+        // Query all shops
+        const shops = await Shop.find({});
+        
+        // Return array of shops
+        return shops;
+      },
+        user: async (parent, { username }) => {
+        return User.findOne({ username })
+            .select('-__V -password')
+    },
+    },
     Mutation: {
         login: async (parent, { email, password }) => {
             const user = await User.findOne({ email });
@@ -38,6 +56,21 @@ const resolvers = {
 
             return { token, user };
         },
+        addShop: async (parent, args, context) => {
+            // Retrieve the current logged-in user from the context
+            const user = await User.findOne({ _id: context.user._id });
+      
+            // Create the shop
+            const shop = await Shop.create(args);
+      
+            // Set the `shop` field of the user to the newly created shop
+            user.shop = shop;
+      
+            // Save the user
+            await user.save();
+      
+            return shop;
+        }
     }
 }
 
