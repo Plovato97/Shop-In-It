@@ -8,20 +8,32 @@ const resolvers = {
             if (context.user) {
             const userData = await User.findOne({ _id: context.user._id })
             .select('-__V -password')
+            .populate('shop')
 
             return userData;
         }
 
         throw new AuthenticationError('Not logged in');
     },
-    
-    user: async (parent, { username }) => {
+    users: async (parent, args, context, info) => {
+        // Query all users
+        const users = await User.find({});
+        
+        // Return array of users
+        return users;
+      },
+      shops: async (parent, args, context, info) => {
+        // Query all shops
+        const shops = await Shop.find({});
+        
+        // Return array of shops
+        return shops;
+      },
+        user: async (parent, { username }) => {
         return User.findOne({ username })
             .select('-__V -password')
-
     },
-},
-
+    },
     Mutation: {
         login: async (parent, { email, password }) => {
             const user = await User.findOne({ email });

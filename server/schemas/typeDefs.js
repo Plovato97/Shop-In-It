@@ -5,6 +5,7 @@ const typeDefs = gql`
         _id: ID!
         username: String!
         email: String
+        shop: Shop
     }
     type Shop {
         _id: ID!
@@ -19,6 +20,7 @@ const typeDefs = gql`
     }
     type Query {
         me: User
+        shops: [Shop]
         shop(username: String!): Shop
         users: [User]
         user(username: String!): User 
