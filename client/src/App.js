@@ -16,6 +16,8 @@ import Signup from './pages/Signup';
 import { StoreProvider } from './utils/GlobalState';
 import Nav from './components/Nav';
 import ProductPage from './components/ProductPost';
+import { Products } from './pages/Products';
+import { Product } from './components/Product';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -50,6 +52,10 @@ function App() {
               <Route path='/signup' element={<Signup />} /> 
               <Route path='/postProduct' element={<ProductPage />} />
             </Routes>
+            <div>
+              <div className='products'> {Products.map((product) => (<Product data={product} /> ))}
+                </div>
+            </div>
           </StoreProvider>
         </div>
       </Router>
