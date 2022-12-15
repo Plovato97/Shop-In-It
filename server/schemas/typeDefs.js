@@ -10,7 +10,7 @@ const typeDefs = gql`
     }
     type Product {
         _id: ID!
-        productName: String
+        productName: String!
         productDescription: String
         productImage: String
         price: Float
@@ -57,7 +57,7 @@ const typeDefs = gql`
         addUser(username: String!, email: String!, password: String!): Auth
         addShop(shopTitle: String!, shopDescription: String!, profilePic: String, shopLocation: String, shopHero: String): Shop
         addOrder(products: [ID]!): Order
-        updateProduct(_id: ID!): Product
+        removeProduct(_id: ID!, productName: String!): Product
     }
 
 `;

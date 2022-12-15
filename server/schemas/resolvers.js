@@ -120,6 +120,11 @@ const resolvers = {
                 return order;
             }
             throw new AuthenticationError('Not logged in');
+        },
+        removeProduct: async (parent, {_id, productName}, context) => {
+            if (context.user) {
+                const updatedShop = await Shop
+            }
         }
     }
 }
