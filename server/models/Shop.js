@@ -3,9 +3,9 @@ const { Schema, model } = require('mongoose');
 const shopSchema = new Schema(
     {
         shopTitle: {
-          type: String,
-          required: true,
-          unique: true,
+            type: String,
+            required: true,
+            unique: true,
         },
         shopDescription: {
             type: String,
@@ -22,12 +22,12 @@ const shopSchema = new Schema(
             type: String,
             required: false
         },
-    //   products: [
-    //     {
-    //       type: mongoose.Schema.Types.ObjectId,
-    //       ref: 'Product'
-    //     }
-    //   ]
+        products: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'Product'
+            }
+        ]
     }
 );
 
