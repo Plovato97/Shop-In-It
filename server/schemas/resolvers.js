@@ -9,6 +9,12 @@ const resolvers = {
                 const userData = await User.findOne({ _id: context.user._id })
                     .select('-__V -password')
                     .populate('shop')
+                    .populate({
+                        path: 'orders.products',
+                        populate: 'category'
+                    });
+                
+                userData.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
 
                 return userData;
             }
@@ -33,8 +39,27 @@ const resolvers = {
             return User.findOne({ username })
                 .select('-__V -password')
         },
+        categories: async () => {
+            return await Category.find();
+        },
+        products: async (parent, {category, name }) => {
+            const params = {};
+
+            if (category) {
+                params.category = category;
+            }
+
+            if (name) {
+                params.name = {
+                    $regex: name
+                };
+            }
+            return await Product.find(params)
+                .populate('category');
+        },
         product: async (parent, {_id}) => {
-            return Product.findById(_id)
+            return await Product.findById(_id)
+                .populate('category');
         },
         order: async (parent, {_id}, context) => {
             if (context.user) {
