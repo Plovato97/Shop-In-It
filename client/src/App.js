@@ -48,8 +48,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        {/*<div>
-           <StoreProvider> 
+        {/*
             <div>
           <StoreProvider>
             <Nav />
@@ -67,6 +66,9 @@ function App() {
            </StoreProvider> 
         </div>  */}
         <NavMobile></NavMobile>
+        <div>
+          <div className='products'> {Products.map((product) => (<Product data={product} /> ))}</div>
+        </div>
         <NavBarMobile></NavBarMobile>
       </Router>
     </ApolloProvider>

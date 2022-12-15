@@ -1,4 +1,7 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
+import Signup from '../../pages/Signup';
+import { Link } from 'react-router-dom';
+import Auth from '../../utils/auth';
 
 const NavBarMobile = (
     home,
@@ -14,6 +17,7 @@ const NavBarMobile = (
   const handleNavBar = (e) => {
     console.log(e.target.getAttribute)
   }
+
 
   return (
     <section id='nav-bar'>
@@ -32,11 +36,13 @@ const NavBarMobile = (
       className={car ? 'car fa-solid fa-cart-shopping nav-bar_activate' : 'fa-solid fa-cart-shopping'}
       onClick={handleNavBar}
     ></i>
-
+    
+    {Auth.loggedIn() && (
     <i 
       className={user ? 'user fa-solid fa-user nav-bar_activate' : 'fa-solid fa-user'}
-      onClick={handleNavBar}  
-    ></i>
+      onClick={handleNavBar}
+      ></i>
+    )}
 </section>
   )
 }
