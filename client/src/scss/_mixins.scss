@@ -1,0 +1,171 @@
+@mixin NavShopCar {
+    & {
+        display: flex;
+        align-items: center;
+
+        .nav-shopCar-icon {
+            position: relative;
+            margin: 20px;
+
+            i {
+                font-size: 2.8rem;
+            }
+
+            .nav-shopCar-count {
+                position: absolute;
+                top: -13px;
+                right: -7px;
+                padding: 0px 7px ;
+                border-radius: 50%;
+                font-size: 1.5rem;
+                color: map-get($colors, white-color );
+                background-color: map-get($colors, soft-blue );
+            }
+        }
+
+        .nav-shopCar-info {
+            position: relative;
+            margin-right: 10px;
+
+            .shopCar-p {
+                margin-bottom: 5px;
+            }
+
+            .shopCar-amount {
+                font-size: 1.6rem;
+            }
+
+            .shopCar-amount_green {
+                color: map-get($colors, green-color );
+            }
+
+            .fa-angle-down {
+                position: absolute;
+                bottom: 0px;
+                right: 8px;
+                cursor: pointer;
+            }
+
+            .nav-shopCar_shop-list {
+                position: absolute;
+                top: 55px;
+                right: -35px;
+                width: 180px;
+                height: 200px;
+                background-color: map-get($colors, off-white );
+                box-shadow: $box-shadow;
+                border: 1px solid map-get($colors , gray-color );
+                border-radius: 15px;
+                overflow: scroll;
+
+                .shop-list-cell {
+                    position: relative;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 10px;
+                    max-width: 180px;
+                    padding: 10px 5px;
+                    border-bottom: 1px solid map-get($colors , gray-color );
+
+                    img {
+                        width: 80px;
+                        border-radius: 5px;
+                    }
+
+                    div {
+                        max-width: 80px;
+                        width: 100%;
+                        .product-name {
+                            font-size: 1.5rem;
+                            font-weight: bold;
+                            white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                        }
+
+                        .price {
+                            font-size: 1.5rem;
+                            text-overflow: ellipsis;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@mixin ProductCard {
+    & {
+        width: 220px;
+        height: 320px;
+        padding: .8em;
+        background: map-get($colors, off-whit );
+        position: relative;
+        // overflow: visible;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+
+        .card-img {
+            background-color: #ffcaa6;
+            height: 50%;
+            width: 100%;
+            border-radius: .5rem;
+            transition: .3s ease;
+            
+            img {
+                width: 100%;
+                height: 100%;
+                border-radius: .5rem;
+                cursor: pointer;
+            }
+           }
+
+        .card-info {
+         padding-top: 10%;
+        }
+
+        svg {
+         width: 20px;
+         height: 20px;
+        }
+        
+        .card-footer {
+         width: 100%;
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         padding-top: 10px;
+         border-top: 1px solid #ddd;
+        }
+        
+        /*Text*/
+        .text-title {
+         font-weight: 900;
+         font-size: 2.5rem;
+         line-height: 1.5;
+        }
+        
+        .text-body {
+         font-size: 1.5rem;
+         padding-bottom: 10px;
+        }
+        
+        /*Button*/
+        .card-button {
+         border: 1px solid #252525;
+         display: flex;
+         padding: .3em;
+         cursor: pointer;
+         border-radius: 50px;
+         transition: .3s ease-in-out;
+        }
+        
+        /*Hover*/
+        .card-button:hover {
+         border: 1px solid map-get($colors, green-color );
+         background-color: map-get($colors, green-color );
+        }
+    }
+
+    
+}
