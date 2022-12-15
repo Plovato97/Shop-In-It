@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "sass": "node-sass -w ./src/scss -o ./src --recursive",
+    "sass": "node-sass -w ./client/src/scss -o ./client/src --recursive",
     "dev": "vite",
     "build-react": "vite build",
     "preview": "vite preview",

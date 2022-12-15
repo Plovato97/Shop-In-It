@@ -1,6 +1,11 @@
 // import logo from './logo.svg';
 // import './App.css';
-import React from 'react';
+import NavBarMobile from './components/Mobile/NavBarMobile'
+import NavMobile from './components/Mobile/NavMobile'
+import Hero from './components/Hero'
+import FeaturedProducts from './components/FeaturedProducts'
+import Footer from './components/Footer'
+import React, {useState} from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import {
   ApolloClient,
@@ -43,7 +48,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div>
+        {/* <div>
           <StoreProvider>
             <Nav />
             <Routes>
@@ -57,7 +62,9 @@ function App() {
                 </div>
             </div>
           </StoreProvider>
-        </div>
+        </div> */}
+        <NavMobile></NavMobile>
+        <NavBarMobile></NavBarMobile>
       </Router>
     </ApolloProvider>
   );
