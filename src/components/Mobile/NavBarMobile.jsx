@@ -1,16 +1,25 @@
 import { useState } from 'react'
 
-const NavBarMobile = () => {
+const NavBarMobile = (
+    home,
+    setHome,
+    search,
+    setSearch,
+    car,
+    setCar,
+    user,
+    setUser
+) => {
 
-  const [home, setHome] = useState(true)
-  const [search, setSearch] = useState(false)
-  const [car, setCar] = useState(false)
-  const [user, setUser] = useState(false)
+  const handleNavBar = (e) => {
+    console.log(e)
+  }
 
   return (
     <section id='nav-bar'>
     <i 
       className={home ? 'fa-solid fa-house nav-bar_activate' : 'fa-solid fa-house'}
+      onClick={handleNavBar}
     ></i>
 
     <i className={search ? 'fa-solid fa-magnifying-glass nav-bar_activate' : 'fa-solid fa-magnifying-glass'}></i>

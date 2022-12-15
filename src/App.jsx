@@ -7,10 +7,24 @@ import Footer from './components/Footer'
 
 function App() {
 
+  const [home, setHome] = useState(true)
+  const [search, setSearch] = useState(false)
+  const [car, setCar] = useState(false)
+  const [user, setUser] = useState(false)
+
   return (
     <div className="App">
       <NavMobile></NavMobile>
-      <NavBarMobile></NavBarMobile>
+      <NavBarMobile
+        home={home}
+        setHome={setHome}
+        search={search}
+        setSearch={setSearch}
+        car={car}
+        setCar={setCar}
+        user={user}
+        setUser={setUser}
+      ></NavBarMobile>
 
 
       <Hero></Hero>
