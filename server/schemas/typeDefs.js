@@ -9,7 +9,7 @@ const typeDefs = gql`
         session: ID
     }
     type Product {
-        _id: ID!
+        productId: ID!
         productName: String!
         productDescription: String
         productImage: String
@@ -58,7 +58,7 @@ const typeDefs = gql`
         addUser(username: String!, email: String!, password: String!): Auth
         addShop(shopTitle: String!, shopDescription: String!, profilePic: String, shopLocation: String, shopHero: String): Shop
         addOrder(products: [ID]!): Order
-        removeProduct(_id: ID!, productName: String!): Product
+        removeProduct(productId: ID!): Shop
         updateShop(shopId: ID! shopTitle: String, shopDescription: String, profilePic: String, shopLocation: String, shopHero: String): Shop   
     } 
         
