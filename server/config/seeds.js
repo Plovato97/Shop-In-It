@@ -28,7 +28,14 @@ db.once('open', async () => {
 
     const products = Product.insertMany([
         {
-            
+            name:'shoes',
+            description:'sizes of the shoes vary, good for running away from wolfs',
+            price:'20.99',
+            quantity:100,
+            shop:3
+        },
+        {
+            name:''
         }
     ])
 })
