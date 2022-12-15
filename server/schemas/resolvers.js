@@ -124,12 +124,6 @@ const resolvers = {
             }
             throw new AuthenticationError('Not logged in');
         },
-        removeProduct: async (parent, {_id, productName}, context) => {
-            if (context.user) {
-                const updatedShop = await Shop
-            }
-        },
-        
         updateShop: async (parent, args, context) => {
             try {
               // Get the shop ID from the arguments
@@ -156,7 +150,35 @@ const resolvers = {
             } catch (error) {
               throw error;
             }
-          }
+          },
+          removeProduct: async (parent, args, context) => {
+            try {
+                // Get the authenticated users's ID and the productID
+                const userId = context.user._id;
+                const {productId} = args;
+
+                // check if the authenticated user is the owner of the product
+                const product = await Product.findOne({
+                    _id: productId, owner: userId
+                });
+
+                if (!product) {
+                    throw new AuthenticationError('You are not the owner of this product');
+                }
+
+                // remove the product from the shop
+                const updatedShop = await Shop.findOneAndUpdate(
+                    {_id: product.shopId},
+                    {$pull: {products: productId}},
+                    {new: true}
+                );
+
+                // return the updated shop
+                return updatedShop;
+            } catch (error) {
+                throw error;
+            }
+        },
           
     }
 }
