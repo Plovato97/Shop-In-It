@@ -1,7 +1,5 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
-// const Order = require('./Order');
-const Shop = require("./Shop")
 
 const userSchema = new Schema(
   {
@@ -21,11 +19,16 @@ const userSchema = new Schema(
       required: true,
       minlength: 5
     },
+    orders: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Order'
+      }
+    ],
     shop: {
-    type: Schema.Types.ObjectId,
-    ref: 'Shop'
+      type: Schema.Types.ObjectId,
+      ref: 'Shop'
     }
-  // orders: [Order.schema]
   },
   // set this to use virtual below
   {
