@@ -21,7 +21,7 @@ const typeDefs = gql`
         username: String!
         email: String
         order: [Order]
-        shop: Shop
+        shop: [Shop]
     }
     type Shop {
         _id: ID!
@@ -29,6 +29,7 @@ const typeDefs = gql`
         shopDescription: String!
         shopHero: String
         shopLocation: String
+        products: [Product]
     }
     type Auth {
         token: ID!
