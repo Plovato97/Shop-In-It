@@ -33,10 +33,10 @@ const resolvers = {
             return User.findOne({ username })
                 .select('-__V -password')
         },
-        product: async (parent, {_id}) => {
+        product: async (parent, { _id }) => {
             return Product.findById(_id)
         },
-        order: async (parent, {_id}, context) => {
+        order: async (parent, { _id }, context) => {
             if (context.user) {
                 const user = await User.findById(context.user._id)
                     .populate({
@@ -86,11 +86,11 @@ const resolvers = {
 
             return shop;
         },
-        addOrder: async (parent, {products}, context) => {
+        addOrder: async (parent, { products }, context) => {
             if (context.user) {
-                const order = new Order({products});
+                const order = new Order({ products });
 
-                await User.findByIdAndUpdate(context.user._id, {$push: {orders: order}});
+                await User.findByIdAndUpdate(context.user._id, { $push: { orders: order } });
 
                 return order;
             }
