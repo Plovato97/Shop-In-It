@@ -26,7 +26,7 @@ const typeDefs = gql`
         username: String!
         email: String
         orders: [Order]
-        shop: [Shop]
+        shop: Shop
     }
     type Shop {
         _id: ID!
@@ -34,6 +34,7 @@ const typeDefs = gql`
         shopDescription: String!
         shopHero: String
         shopLocation: String
+        profilePic: String
         products: [Product]
     }
     type Auth {
@@ -58,7 +59,10 @@ const typeDefs = gql`
         addShop(shopTitle: String!, shopDescription: String!, profilePic: String, shopLocation: String, shopHero: String): Shop
         addOrder(products: [ID]!): Order
         removeProduct(_id: ID!, productName: String!): Product
-    }
+        updateShop(shopId: ID! shopTitle: String, shopDescription: String, profilePic: String, shopLocation: String, shopHero: String): Shop   
+    } 
+        
+}
 
 `;
 
