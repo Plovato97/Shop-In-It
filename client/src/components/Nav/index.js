@@ -28,9 +28,9 @@ function Nav() {
                     <li className='mx-1'>
                         <Link to='/login'>Log In</Link>
                     </li>
-                    <li className='mx-1'>
+                    {/* <li className='mx-1'>
                         <Link to='/PostProducts'>Post Products</Link>
-                    </li>
+                    </li> */}
                 </ul>
             );
         }

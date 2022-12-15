@@ -13,11 +13,12 @@ import { setContext } from '@apollo/client/link/context';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
-import { StoreProvider } from './utils/GlobalState';
+// import { StoreProvider } from './utils/GlobalState';
 import Nav from './components/Nav';
 // import ProductPage from './components/ProductPost';
 import { Products } from './pages/Products';
 import { Product } from './components/Product';
+import PostProducts from './components/PostProducts';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -44,7 +45,7 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <div>
-          <StoreProvider>
+          {/* <StoreProvider> */}
             <Nav />
             <Routes>
               <Route path='/' element={<Home />} /> 
@@ -52,11 +53,12 @@ function App() {
               <Route path='/signup' element={<Signup />} /> 
               {/* <Route path='/postProduct' element={<ProductPage />} /> */}
             </Routes>
+            <PostProducts />
             <div>
               <div className='products'> {Products.map((product) => (<Product data={product} /> ))}
                 </div>
             </div>
-          </StoreProvider>
+          {/* </StoreProvider> */}
         </div>
       </Router>
     </ApolloProvider>
