@@ -8,6 +8,14 @@ const typeDefs = gql`
     type Checkout {
         session: ID
     }
+    input ProductInput {
+        productId: ID!
+        productName: String!
+        productDescription: String
+        productImage: String
+        price: Float
+        category: Category
+    }
     type Product {
         productId: ID!
         productName: String!
@@ -58,11 +66,10 @@ const typeDefs = gql`
         addUser(username: String!, email: String!, password: String!): Auth
         addShop(shopTitle: String!, shopDescription: String!, profilePic: String, shopLocation: String, shopHero: String): Shop
         addOrder(products: [ID]!): Order
+        addProduct(input: ProductInput!): Shop
         removeProduct(productId: ID!): Shop
         updateShop(shopId: ID! shopTitle: String, shopDescription: String, profilePic: String, shopLocation: String, shopHero: String): Shop   
     } 
-        
-}
 `;
 
 module.exports = typeDefs;
