@@ -3,7 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
+    "sass": "node-sass -w ./client/src/scss -o ./client/src --recursive",
+    "dev": "vite",
+    "build-react": "vite build",
+    "preview": "vite preview",
     "start": "node server/server.js",
     "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
     "install": "cd server && npm i && cd ../client && npm i",
@@ -19,8 +24,17 @@
   "bugs": {
     "url": "https://github.com/Plovato97/Shop-In-It/issues"
   },
-  "homepage": "https://github.com/Plovato97/Shop-In-It#readme",
+  "dependencies": {
+    "node-sass": "^8.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-modal": "^3.16.1"
+  },
   "devDependencies": {
-    "concurrently": "^7.6.0"
+    "@types/react": "^18.0.26",
+    "@types/react-dom": "^18.0.9",
+    "@vitejs/plugin-react": "^3.0.0",
+    "concurrently": "^7.6.0",
+    "vite": "^4.0.0"
   }
 }
