@@ -1,6 +1,4 @@
-// import './App.css';
 import NavBarMobile from './components/Mobile/NavBarMobile'
-import NavMobile from './components/Mobile/NavMobile'
 import Hero from './components/Hero'
 import FeaturedProducts from './components/FeaturedProducts'
 import Footer from './components/Footer'
@@ -18,11 +16,12 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 // import { StoreProvider } from './utils/GlobalState';
-// import Nav from './components/Nav';
+import Nav from './components/Nav';
 // import ProductPage from './components/ProductPost';
 import { Products } from './pages/Products';
 import { Product } from './components/Product';
 import PostProducts from './components/PostProducts';
+import Categories from './components/Categories';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -48,25 +47,15 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        {/*
-            <div>
-          <StoreProvider>
-            <Nav />
-            <Routes>
-              <Route path='/' element={<Home />} /> 
-              <Route path='/login' element={<Login />} /> 
-              <Route path='/signup' element={<Signup />} /> 
-               <Route path='/postProduct' element={<ProductPage />} />
-            </Routes>
-            <PostProducts />
-            <div>
-              <div className='products'> {Products.map((product) => (<Product data={product} /> ))}
-                </div>
-            </div>
-           </StoreProvider> 
-        </div>  */}
-        <NavMobile></NavMobile>
+        <Nav />
+          <Routes>
+            <Route path='/' element={<Home />} /> 
+            <Route path='/login' element={<Login />} /> 
+            <Route path='/signup' element={<Signup />} /> 
+            {/* <Route path='/postProduct' element={<ProductPage />} /> */}
+          </Routes>
         <div>
+          <Categories />
           <div className='products'> {Products.map((product) => (<Product data={product} /> ))}</div>
         </div>
         <NavBarMobile></NavBarMobile>

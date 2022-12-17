@@ -1,52 +1,30 @@
 import React from 'react';
-import Auth from '../../utils/auth';
+import NavShopCar from "../Elements/NavShopCar"
 import { Link } from 'react-router-dom';
 
 function Nav() {
 
-    function showNavigation() {
-        if (Auth.loggedIn()) {
-            return (
-                <ul className='flex-row'>
-                    <li className='mx-1'>
-                        <Link to='/postProduct'>Post Products</Link>
-                    </li>
-                    <li className='mx-1'>
-                        <Link to='/orderHistory'>Order History</Link>
-                    </li>
-                    <li className='mx-1'>
-                        <a href='/' onClick={() => Auth.logout()}>Logout</a>
-                    </li>
-                </ul>
-            );
+     // Navbar scroll - Javascript
+    var prevScrollpos = window.pageYOffset;
+    window.onscroll = function() {
+        var currentScrollPos = window.pageYOffset;
+        if (prevScrollpos > currentScrollPos) {
+            document.getElementById("nav-mobile").style.top = "0";
         } else {
-            return (
-                <ul className='flex-row'>
-                    <li className='mx-1'>
-                        <Link to='/signup'>Sign Up</Link>
-                    </li>
-                    <li className='mx-1'>
-                        <Link to='/login'>Log In</Link>
-                    </li>
-                    {/* <li className='mx-1'>
-                        <Link to='/PostProducts'>Post Products</Link>
-                    </li> */}
-                </ul>
-            );
+            document.getElementById("nav-mobile").style.top = "-150px";
         }
+        prevScrollpos = currentScrollPos;
     }
 
     return (
         <header className='flex-row px-1'>
-            <h1>
-                <Link to='/'>
-                    <span>Logo Goes Here</span>
-                </Link>
-            </h1>
+            <nav id='nav-mobile'>
+        <Link to='/'>
+            <p className='logo'>Shop 'n It</p>
+        </Link>
+            <NavShopCar></NavShopCar>
+        </nav>
 
-            <nav>
-                {showNavigation()}
-            </nav>
         </header>
     );
 }

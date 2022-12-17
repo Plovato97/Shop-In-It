@@ -1,0 +1,43 @@
+.background {
+    /* background-image: url(../../assets/faded-blue.jpg); */
+    margin-top: 15rem;
+}
+
+h1 {
+    text-align: center;
+    margin: 2rem;
+    padding-bottom: 2rem;
+    font-size: 3.5rem;
+}
+
+.category {
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+
+.category-img {
+    width: 15rem;
+    height: 15rem;
+    display: block;
+    margin: auto;
+    overflow: hidden;
+    transition: transform .5s, filter 3s ease-in-out;
+    border-radius: 50%;
+}
+
+.category-img:hover {
+    transform: scale(1.1);
+}
+
+.category-title-a {
+    font-size: 18px;
+    text-align: center;
+    margin: 1rem;
+}
+
+.card-a .category-title-a:hover {
+    text-decoration: underline;
+}
