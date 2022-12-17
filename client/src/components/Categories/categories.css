@@ -21,4 +21,21 @@ h1 {
     height: 15rem;
     display: block;
     margin: auto;
+    overflow: hidden;
+    transition: transform .5s, filter 3s ease-in-out;
+    border-radius: 50%;
+}
+
+.category-img:hover {
+    transform: scale(1.1);
+}
+
+.category-title-a {
+    font-size: 18px;
+    text-align: center;
+    margin: 1rem;
+}
+
+.card-a .category-title-a:hover {
+    text-decoration: underline;
 }

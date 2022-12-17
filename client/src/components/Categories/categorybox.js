@@ -12,7 +12,7 @@ function CategoryBox(props) {
                     </img>
                 {/* </a> */}
                 <div className='category-text'>
-                    <h1 className='category-title-a'>{categoryName}</h1>
+                    <h2 className='category-title-a'>{categoryName}</h2>
                 </div>
             </div>
         </article>
