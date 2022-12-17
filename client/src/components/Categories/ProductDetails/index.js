@@ -1,5 +1,6 @@
 import React from 'react'
 import { AiOutlineMinus, AiOutlinePlus, AiFillStar, AiOutlineStar } from 'react-icons/ai';
+import './ProductDetails.css';
 import iphone from '../../assets/iphone.jpg';
 
 const ProductDetails = () => {
@@ -21,7 +22,7 @@ const ProductDetails = () => {
             <div>
                 <div className='image-container'>
                     {/* <img src={urlFor(image && image[0])}></img> */}
-                    <img src={iphone} />
+                    <img src={iphone} className="product-detail-image" />
                 </div>
                 {/* <div className='small-images-container'>
                     {image?.map((item, i) => (
@@ -32,7 +33,7 @@ const ProductDetails = () => {
                     ))}
                 </div> */}
             </div>
-            <div className='product-details-desc'>
+            <div className='product-detail-desc'>
                 {/* <h1>{title}</h1> */}
                 <h1>iPhone 14 Max Pro</h1>
                 <div className='reviews'></div>
@@ -47,7 +48,7 @@ const ProductDetails = () => {
             </div>
             <h4>Details:</h4>
             {/* <p>{details}</p> */}
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla quod quos culpa tempora eligendi. Similique praesentium modi alias adipisci hic quos rerum incidunt non earum, porro quam sequi reiciendis debitis sed, laborum nulla laboriosam, commodi asperiores totam eum rem soluta obcaecati atque. Voluptatum, doloribus recusandae architecto, perferendis magnam aliquam provident totam, dolores dolore ipsam sequi? Repudiandae reiciendis odio, numquam dicta, corporis hic aut necessitatibus eaque, in accusantium eveniet magnam voluptatibus rem inventore velit atque aliquid itaque consectetur tempora dignissimos aliquam iste. Eius dolores accusamus, voluptatum provident nesciunt aspernatur corporis hic ipsam impedit quas vitae nemo quia non totam, adipisci tempore?</p>
+            <p className='details'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla quod quos culpa tempora eligendi. Similique praesentium modi alias adipisci hic quos rerum incidunt non earum, porro quam sequi reiciendis debitis sed, laborum nulla laboriosam, commodi asperiores totam eum rem soluta obcaecati atque. Voluptatum, doloribus recusandae architecto, perferendis magnam aliquam provident totam, dolores dolore ipsam sequi? Repudiandae reiciendis odio, numquam dicta, corporis hic aut necessitatibus eaque, in accusantium eveniet magnam voluptatibus rem inventore velit atque aliquid itaque consectetur tempora dignissimos aliquam iste. Eius dolores accusamus, voluptatum provident nesciunt aspernatur corporis hic ipsam impedit quas vitae nemo quia non totam, adipisci tempore?</p>
             {/* <p className='price'>${price}</p> */}
             <p className='price'>$999.99</p>
             <div className='quantity'>
