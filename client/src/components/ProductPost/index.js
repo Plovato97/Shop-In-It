@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Container, Card } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_PRODUCT } from '../../utils/mutations';
+import { Link } from 'react-router-dom'
 import Auth from '../../utils/auth';
 
 function ProductPage (props) {
@@ -31,6 +32,7 @@ function ProductPage (props) {
 
     return(
         <Container>
+            <Link to='/postProduct'>Post Product</Link>
             {Auth.loggedIn() && (
                 <Card border='dark'>
                    <form onSubmit={handleProductSubmit}>

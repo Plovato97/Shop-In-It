@@ -1,4 +1,3 @@
-// import './App.css';
 import NavBarMobile from './components/Mobile/NavBarMobile'
 import NavMobile from './components/Mobile/NavMobile'
 import Hero from './components/Hero'
@@ -23,6 +22,7 @@ import Signup from './pages/Signup';
 import { Products } from './pages/Products';
 import { Product } from './components/Product';
 import PostProducts from './components/PostProducts';
+import Categories from './components/Categories';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -65,8 +65,9 @@ function App() {
             </div>
            </StoreProvider> 
         </div>  */}
-        <NavMobile></NavMobile>
+        {/* <NavMobile></NavMobile> */}
         <div>
+          <Categories />
           <div className='products'> {Products.map((product) => (<Product data={product} /> ))}</div>
         </div>
         <NavBarMobile></NavBarMobile>
