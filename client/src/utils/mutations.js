@@ -11,6 +11,15 @@ export const LOGIN = gql`
     }
 `;
 
+// export const UPDATESHOP = updateShop($shopId: ID!, $shopDescription: String, $shopTitle: String) {
+//     updateShop(shopId: $shopId, shopDescription: $shopDescription, shopTitle: $shopTitle) {
+//       _id
+//       shopDescription
+//       shopHero
+//       shopLocation
+//       shopTitle
+//     }
+
 export const ADD_SHOP = gql`
 mutation AddShop(
     $shopTitle: String!, 
