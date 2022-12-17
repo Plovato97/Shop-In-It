@@ -22,7 +22,7 @@ const NavShopCar = () => {
           return (
                <ul className='flex-row'>
                   <li className='mx-1'>
-                      <Link to='/orderHistory'>Order History</Link>
+                      <Link style={{textDecoration: 'none'}} to='/orderHistory'>Order History</Link>
                   </li>
                   <li className='mx-1'>
                       <a href='/' onClick={() => Auth.logout()}>Logout</a>
@@ -33,10 +33,10 @@ const NavShopCar = () => {
           return (
                <ul className='flex-row'>
                   <li className='mx-1'>
-                      <Link to='/signup'>Sign Up</Link>
+                      <Link style={{textDecoration: 'none'}} to='/signup'>Sign Up</Link>
                   </li>
                   <li className='mx-1'>
-                      <Link to='/login'>Log In </Link>
+                      <Link style={{textDecoration: 'none'}} to='/login'>Log In </Link>
                   </li>
                   {/* <li className='mx-1'>
                       <Link to='/PostProducts'>Post Products</Link>
