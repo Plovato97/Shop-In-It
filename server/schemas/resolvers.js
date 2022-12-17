@@ -7,21 +7,24 @@ const resolvers = {
     Query: {
         me: async (parent, args, context) => {
             if (context.user) {
-                const userData = await User.findOne({ _id: context.user._id })
-                    .select('-__V -password')
-                    .populate('shop')
-                    .populate({
-                        path: 'orders.products',
-                        populate: 'category'
-                    });
-
-                userData.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
-
-                return userData;
+              // Find the user and select only the desired fields
+              const user = await User.findOne({ _id: context.user._id })
+                .select('-__V -password');
+          
+              // Populate the shop field and select only the desired fields
+              const shop = await Shop.findOne({ _id: user.shop })
+                .select('-__V')
+                .populate('products', '-__V');
+          
+              // Add the shop and products fields to the user object
+              user.shop = shop;
+              user.products = shop.products;
+          
+              return user;
             }
-
+          
             throw new AuthenticationError('Not logged in');
-        },
+          },
         // Get all users from query
         users: async (parent, args, context, info) => {
             // Query all users
@@ -115,6 +118,29 @@ const resolvers = {
 
             return shop;
         },
+        addProduct: async (parent, args, context) => {
+            // Ensure that the user is logged in
+            if (!context.user) {
+              throw new Error("You must be logged in to add a product to the shop");
+            }
+          
+            // Find the user and shop
+            // const user = await User.findOne({ _id: context.user._id });
+            const shop = await Shop.findOne({ _id: args.shopId });
+          
+            // // Check if the user is the owner of the shop
+            // if (shop.owner !== user._id) {
+            //   throw new Error("Only the owner of the shop can add products to it");
+            // }
+          
+            // Create the product and add it to the shop
+            const product = await Product.create(args);
+            shop.products.push(product);
+            await shop.save();
+          
+            return product;
+          },
+          
         addOrder: async (parent, { products }, context) => {
             if (context.user) {
                 const order = new Order({ products });

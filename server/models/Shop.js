@@ -24,8 +24,8 @@ const shopSchema = new Schema(
         },
         products: [
             {
-                type: Schema.Types.ObjectId,
-                ref: 'Product'
+            type: Schema.Types.ObjectId,
+            ref: 'Product'
             }
         ]
     }
