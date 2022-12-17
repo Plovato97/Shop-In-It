@@ -1,8 +1,24 @@
 .background {
-    background-image: url(../../assets/faded-blue.jpg);
+    background-image: url(../../assets/faded-blue.jpg) cover;
+    margin-top: 13rem;
 }
 
 h1 {
     text-align: center;
+    margin: 2rem;
+}
 
+.category {
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+
+.category-img {
+    width: 15rem;
+    height: 15rem;
+    display: block;
+    margin: auto;
 }

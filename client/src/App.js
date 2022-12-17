@@ -65,7 +65,7 @@ function App() {
             </div>
            </StoreProvider> 
         </div>  */}
-        {/* <NavMobile></NavMobile> */}
+        <NavMobile></NavMobile>
         <div>
           <Categories />
           <div className='products'> {Products.map((product) => (<Product data={product} /> ))}</div>

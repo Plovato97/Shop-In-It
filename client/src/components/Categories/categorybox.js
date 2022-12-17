@@ -6,13 +6,13 @@ function CategoryBox(props) {
 
     return (
         <article className='wrapper-a'>
-            <div className='card'>
+            <div className='card-a'>
                 {/* <a target='_blank' rel='noreferrer' className='category-button'> */}
                     <img alt={alt} className='category-img' src={require(`./images/${img}.jpg`)}>
                     </img>
                 {/* </a> */}
                 <div className='category-text'>
-                    <h2 className='category-title-a'>{categoryName}</h2>
+                    <h1 className='category-title-a'>{categoryName}</h1>
                 </div>
             </div>
         </article>
