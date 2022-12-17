@@ -47,23 +47,6 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        {/*
-            <div>
-          <StoreProvider>
-            <Nav />
-            <Routes>
-              <Route path='/' element={<Home />} /> 
-              <Route path='/login' element={<Login />} /> 
-              <Route path='/signup' element={<Signup />} /> 
-               <Route path='/postProduct' element={<ProductPage />} />
-            </Routes>
-            <PostProducts />
-            <div>
-              <div className='products'> {Products.map((product) => (<Product data={product} /> ))}
-                </div>
-            </div>
-           </StoreProvider> 
-        </div>  */}
         <Nav />
           <Routes>
             <Route path='/' element={<Home />} /> 
