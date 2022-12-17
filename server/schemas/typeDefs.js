@@ -20,7 +20,7 @@ const typeDefs = gql`
         _id: ID!
         username: String!
         email: String
-        order: [Order]
+        orders: [Order]
         shop: Shop
     }
     type Shop {
@@ -29,6 +29,8 @@ const typeDefs = gql`
         shopDescription: String!
         shopHero: String
         shopLocation: String
+        profilePic: String
+        products: [Product]
     }
     type Auth {
         token: ID!
@@ -48,8 +50,11 @@ const typeDefs = gql`
         login(email: String!, password: String!): Auth
         addUser(username: String!, email: String!, password: String!): Auth
         addShop(shopTitle: String!, shopDescription: String!, profilePic: String, shopLocation: String, shopHero: String): Shop
+        addProduct(shopId: ID!, productName: String!, productDescription: String!, productImage: String, price: Float!): Product
         addOrder(products: [ID]!): Order
-    }
+        updateShop(shopId: ID! shopTitle: String, shopDescription: String, profilePic: String, shopLocation: String, shopHero: String): Shop    
+        
+}
 
 `;
 

@@ -1,0 +1,62 @@
+#hero {
+    display: flex;
+    position: relative;
+    width: 95%;
+    height: 350px;
+    margin: 135px auto 35px;
+    border-radius: 35px;
+    box-shadow: $box-shadow;
+
+    .hero-bg {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: -10;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 35px;
+        }
+    }
+
+    .hero-title {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+        color: map-get($colors, off-white );
+
+        h1 {
+            font-size: map-get($font-size, heading );
+            line-height: 55px;
+        }
+
+        p {
+            font-size: map-get($font-size, paragraph );
+            color: map-get($colors, soft-blue );
+            margin-top: 5px; 
+        }
+
+        .hero-input-container {
+            margin: 15px 0;
+
+            input {
+                padding: 10px;
+                width: 220px;
+                border-radius: 10px 0 0 10px;
+                border: none;
+            }
+
+            button {
+                padding: 10px;
+                border-radius: 0 10px 10px 0;
+                border: none;
+                background-color: map-get($colors, soft-blue );
+                color: map-get($colors, off-white );
+            }
+        }
+    }
+}

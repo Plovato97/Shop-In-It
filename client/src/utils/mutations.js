@@ -11,6 +11,32 @@ export const LOGIN = gql`
     }
 `;
 
+// export const UPDATESHOP = updateShop($shopId: ID!, $shopDescription: String, $shopTitle: String) {
+//     updateShop(shopId: $shopId, shopDescription: $shopDescription, shopTitle: $shopTitle) {
+//       _id
+//       shopDescription
+//       shopHero
+//       shopLocation
+//       shopTitle
+//     }
+
+export const ADD_SHOP = gql`
+mutation AddShop(
+    $shopTitle: String!, 
+    $shopDescription: String!, 
+    $profilePic: String, 
+    $shopLocation: String, 
+    $shopHero: String) {
+  addShop(shopTitle: $shopTitle, shopDescription: $shopDescription, profilePic: $profilePic, shopLocation: $shopLocation, shopHero: $shopHero) {
+    _id
+    shopDescription
+    shopHero
+    shopLocation
+    shopTitle
+  }
+}
+`;
+
 export const ADD_ORDER = gql`
   mutation addOrder($products: [ID]!) {
     addOrder(products: $products) {
@@ -47,14 +73,12 @@ export const ADD_PRODUCT = gql`
 
 export const ADD_USER = gql`
     mutation addUser(
-        $firstName: String!
-        $lastName: String!
+        $username: String!
         $email: String!
         $password: String!
     ) {
         addUser(
-            firstName: $firstName
-            lastName: $lastName
+            username: $username
             email: $email
             password: $password
         ) {

@@ -1,0 +1,30 @@
+#nav-bar {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    bottom: 0px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 15px;
+    border-radius: 30px;
+    width: 75%;
+    min-width: 290px;
+    margin: 0 auto;
+    font-size: 1.5rem;
+    color: map-get($colors, soft-blue );
+    background-color: map-get($colors, primary-color );
+    box-shadow: 8px 10px 50px -8px rgba(0,0,0,0.1);
+    z-index: 10;
+
+    i {
+        padding: 10px 20px;
+        cursor: pointer;
+    }
+
+    .nav-bar_activate {
+        color: map-get($colors, primary-color );
+        background-color: map-get($colors, white-color );
+        border-radius: 20px;
+    }
+}

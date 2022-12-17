@@ -6,15 +6,25 @@ const resolvers = {
     Query: {
         me: async (parent, args, context) => {
             if (context.user) {
-                const userData = await User.findOne({ _id: context.user._id })
-                    .select('-__V -password')
-                    .populate('shop')
-
-                return userData;
+              // Find the user and select only the desired fields
+              const user = await User.findOne({ _id: context.user._id })
+                .select('-__V -password');
+          
+              // Populate the shop field and select only the desired fields
+              const shop = await Shop.findOne({ _id: user.shop })
+                .select('-__V')
+                .populate('products', '-__V');
+          
+              // Add the shop and products fields to the user object
+              user.shop = shop;
+              user.products = shop.products;
+          
+              return user;
             }
-
+          
             throw new AuthenticationError('Not logged in');
-        },
+          },
+        // Get all users from query
         users: async (parent, args, context, info) => {
             // Query all users
             const users = await User.find({});
@@ -22,6 +32,7 @@ const resolvers = {
             // Return array of users
             return users;
         },
+        // Get all shops from query
         shops: async (parent, args, context, info) => {
             // Query all shops
             const shops = await Shop.find({});
@@ -29,14 +40,15 @@ const resolvers = {
             // Return array of shops
             return shops;
         },
+        // Get a single user from username query
         user: async (parent, { username }) => {
             return User.findOne({ username })
                 .select('-__V -password')
         },
-        product: async (parent, {_id}) => {
+        product: async (parent, { _id }) => {
             return Product.findById(_id)
         },
-        order: async (parent, {_id}, context) => {
+        order: async (parent, { _id }, context) => {
             if (context.user) {
                 const user = await User.findById(context.user._id)
                     .populate({
@@ -86,16 +98,68 @@ const resolvers = {
 
             return shop;
         },
-        addOrder: async (parent, {products}, context) => {
+        addProduct: async (parent, args, context) => {
+            // Ensure that the user is logged in
+            if (!context.user) {
+              throw new Error("You must be logged in to add a product to the shop");
+            }
+          
+            // Find the user and shop
+            // const user = await User.findOne({ _id: context.user._id });
+            const shop = await Shop.findOne({ _id: args.shopId });
+          
+            // // Check if the user is the owner of the shop
+            // if (shop.owner !== user._id) {
+            //   throw new Error("Only the owner of the shop can add products to it");
+            // }
+          
+            // Create the product and add it to the shop
+            const product = await Product.create(args);
+            shop.products.push(product);
+            await shop.save();
+          
+            return product;
+          },
+          
+        addOrder: async (parent, { products }, context) => {
             if (context.user) {
-                const order = new Order({products});
+                const order = new Order({ products });
 
-                await User.findByIdAndUpdate(context.user._id, {$push: {orders: order}});
+                await User.findByIdAndUpdate(context.user._id, { $push: { orders: order } });
 
                 return order;
             }
             throw new AuthenticationError('Not logged in');
-        }
+        },
+        
+        updateShop: async (parent, args, context) => {
+            try {
+              // Get the shop ID from the arguments
+              const { shopId } = args;
+          
+              // Get the authenticated user's ID from the context
+              const userId = context.user._id;
+          
+              // Check if the authenticated user is the owner of the shop
+              const shop = await Shop.findOne({ _id: shopId, owner: userId });
+              if (!shop) {
+                throw new Error('You are not the owner of this shop.');
+              }
+          
+              // Update the shop with the provided information
+              const updatedShop = await Shop.findOneAndUpdate(
+                { _id: shopId },
+                { $set: { ...args } },
+                { new: true }
+              );
+          
+              // Return the updated shop
+              return updatedShop;
+            } catch (error) {
+              throw error;
+            }
+          }
+          
     }
 }
 
