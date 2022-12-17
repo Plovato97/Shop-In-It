@@ -30,6 +30,10 @@
   height: 25rem;
 }
 
+.description {
+  font-size: 2rem;
+}
+
 .product .description {
   text-align: center;
 }
