@@ -77,7 +77,9 @@ button {
   background-color: #F5F5F7;
   border-bottom: 1px solid #dfdede;
   font-size: 1.8rem;
-  box-shadow: 8px 10px 15px -8px rgba(0, 0, 0, 0.1); }
+  box-shadow: 8px 10px 15px -8px rgba(0, 0, 0, 0.1); 
+  transition: top 0.3s; /* Transition effect when sliding down (and up) */
+}
   #nav-mobile .logo {
     font-size: 3rem;
     color: #015EEC; }
