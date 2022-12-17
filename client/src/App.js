@@ -16,7 +16,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 // import { StoreProvider } from './utils/GlobalState';
-// import Nav from './components/Nav';
+import Nav from './components/Nav';
 // import ProductPage from './components/ProductPost';
 import { Products } from './pages/Products';
 import { Product } from './components/Product';
