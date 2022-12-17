@@ -14,7 +14,7 @@ const resolvers = {
                         path: 'orders.products',
                         populate: 'category'
                     });
-                
+
                 userData.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
 
                 return userData;
@@ -46,7 +46,7 @@ const resolvers = {
         categories: async () => {
             return await Category.find();
         },
-        products: async (parent, {category, name }) => {
+        products: async (parent, { category, name }) => {
             const params = {};
 
             if (category) {
@@ -61,7 +61,7 @@ const resolvers = {
             return await Product.find(params)
                 .populate('category');
         },
-        product: async (parent, {_id}) => {
+        product: async (parent, { _id }) => {
             return await Product.findById(_id)
                 .populate('category');
         },
@@ -127,36 +127,53 @@ const resolvers = {
         },
         updateShop: async (parent, args, context) => {
             try {
-              // Get the shop ID from the arguments
-              const { shopId } = args;
-          
-              // Get the authenticated user's ID from the context
-              const userId = context.user._id;
-          
-              // Check if the authenticated user is the owner of the shop
-              const shop = await Shop.findOne({ _id: shopId, owner: userId });
-              if (!shop) {
-                throw new Error('You are not the owner of this shop.');
-              }
-          
-              // Update the shop with the provided information
-              const updatedShop = await Shop.findOneAndUpdate(
-                { _id: shopId },
-                { $set: { ...args } },
-                { new: true }
-              );
-          
-              // Return the updated shop
-              return updatedShop;
+                // Get the shop ID from the arguments
+                const { shopId } = args;
+
+                // Get the authenticated user's ID from the context
+                const userId = context.user._id;
+
+                // Check if the authenticated user is the owner of the shop
+                const shop = await Shop.findOne({ _id: shopId, owner: userId });
+                if (!shop) {
+                    throw new Error('You are not the owner of this shop.');
+                }
+
+                // Update the shop with the provided information
+                const updatedShop = await Shop.findOneAndUpdate(
+                    { _id: shopId },
+                    { $set: { ...args } },
+                    { new: true }
+                );
+
+                // Return the updated shop
+                return updatedShop;
             } catch (error) {
-              throw error;
+                throw error;
             }
-          },
-          removeProduct: async (parent, args, context) => {
+        },
+        addProduct: async (parent, args, context) => {
+            // Ensure that the user is logged in
+            if (!context.user) {
+                throw new Error("You must be logged in to add a product to the shop");
+            }
+
+            const shop = await Shop.findOne({ _id: args.shopId });
+
+           
+
+            // Create the product and add it to the shop
+            const product = await Product.create(args);
+            shop.product.push(product);
+            await shop.save();
+
+            return product;
+        },
+        removeProduct: async (parent, args, context) => {
             try {
                 // Get the authenticated users's ID and the productID
                 const userId = context.user._id;
-                const {productId} = args;
+                const { productId } = args;
 
                 // check if the authenticated user is the owner of the product
                 const product = await Product.findOne({
@@ -169,9 +186,9 @@ const resolvers = {
 
                 // remove the product from the shop
                 const updatedShop = await Shop.findOneAndUpdate(
-                    {_id: product.shopId},
-                    {$pull: {products: productId}},
-                    {new: true}
+                    { _id: product.shopId },
+                    { $pull: { products: productId } },
+                    { new: true }
                 );
 
                 // return the updated shop
@@ -180,7 +197,7 @@ const resolvers = {
                 throw error;
             }
         },
-          
+
     }
 }
 
