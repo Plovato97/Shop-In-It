@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { NavShopCell } from "./NavShopCell"
 import { Link } from 'react-router-dom';
 import Auth from '../../utils/auth';
+import './NavShop.css';
 
 const NavShopCar = () => {
 
