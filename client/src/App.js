@@ -1,5 +1,4 @@
 import NavBarMobile from './components/Mobile/NavBarMobile'
-import NavMobile from './components/Mobile/NavMobile'
 import Hero from './components/Hero'
 import FeaturedProducts from './components/FeaturedProducts'
 import Footer from './components/Footer'
@@ -65,14 +64,13 @@ function App() {
             </div>
            </StoreProvider> 
         </div>  */}
-        <NavMobile>
-        <Routes>
-              <Route path='/' element={<Home />} /> 
-              <Route path='/login' element={<Login />} /> 
-              <Route path='/signup' element={<Signup />} /> 
-               {/* <Route path='/postProduct' element={<ProductPage />} /> */}
-            </Routes>
-        </NavMobile>
+        <Nav />
+          <Routes>
+            <Route path='/' element={<Home />} /> 
+            <Route path='/login' element={<Login />} /> 
+            <Route path='/signup' element={<Signup />} /> 
+            {/* <Route path='/postProduct' element={<ProductPage />} /> */}
+          </Routes>
         <div>
           <Categories />
           <div className='products'> {Products.map((product) => (<Product data={product} /> ))}</div>
