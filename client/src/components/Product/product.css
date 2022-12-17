@@ -3,8 +3,16 @@
     height: auto;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    place-items: center;
+    /* place-items: center; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
   }
+
+.container-product {
+  margin: .5rem;
+  padding: .5rem;
+}
 
 .product {
   border-radius: 15px;
@@ -18,8 +26,8 @@
 }
 
 .product img {
-  width: 400px;
-  max-height: 500px;
+  width: 30rem;
+  height: 25rem;
 }
 
 .product .description {

@@ -6,6 +6,8 @@
 h1 {
     text-align: center;
     margin: 2rem;
+    padding-bottom: 2rem;
+    font-size: 3.5rem;
 }
 
 .category {
