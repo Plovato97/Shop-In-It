@@ -1,13 +1,17 @@
 import NavShopCar from "../Elements/NavShopCar"
-
+import { Link } from 'react-router-dom';
 
 const NavMobile = () => {
-  return (
-    <nav id='nav-mobile'>
-      <p className='logo'>Logo</p>
 
-      <NavShopCar></NavShopCar>
-    </nav>
+  return (
+    <div>
+        <nav id='nav-mobile'>
+        <Link to='/'>
+            <p className='logo'>Shop 'n It</p>
+        </Link>
+            <NavShopCar></NavShopCar>
+        </nav>
+    </div>
   )
 }
 

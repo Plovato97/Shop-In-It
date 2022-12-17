@@ -65,7 +65,14 @@ function App() {
             </div>
            </StoreProvider> 
         </div>  */}
-        <NavMobile></NavMobile>
+        <NavMobile>
+        <Routes>
+              <Route path='/' element={<Home />} /> 
+              <Route path='/login' element={<Login />} /> 
+              <Route path='/signup' element={<Signup />} /> 
+               {/* <Route path='/postProduct' element={<ProductPage />} /> */}
+            </Routes>
+        </NavMobile>
         <div>
           <Categories />
           <div className='products'> {Products.map((product) => (<Product data={product} /> ))}</div>
