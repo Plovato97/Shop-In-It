@@ -6,24 +6,26 @@ const resolvers = {
     Query: {
         me: async (parent, args, context) => {
             if (context.user) {
-              // Find the user and select only the desired fields
-              const user = await User.findOne({ _id: context.user._id })
-                .select('-__V -password');
-          
-              // Populate the shop field and select only the desired fields
-              const shop = await Shop.findOne({ _id: user.shop })
-                .select('-__V')
-                .populate('products', '-__V');
-          
-              // Add the shop and products fields to the user object
-              user.shop = shop;
-              user.products = shop.products;
-          
-              return user;
+                // Find the user and select only the desired fields
+                const user = await User.findOne({ _id: context.user._id })
+                    .select('-__V -password')
+                    .populate({path: 'orders.products', populate: 'products'})
+
+                // Populate the shop field and select only the desired fields
+                const shop = await Shop.findOne({ _id: user.shop })
+                    .select('-__V')
+                    .populate('products', '-__V');
+
+                // Add the shop and products fields to the user object
+                user.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
+                user.shop = shop;
+                user.products = shop.products;
+
+                return user;
             }
-          
+
             throw new AuthenticationError('Not logged in');
-          },
+        },
         // Get all users from query
         users: async (parent, args, context, info) => {
             // Query all users
@@ -48,6 +50,17 @@ const resolvers = {
         product: async (parent, { _id }) => {
             return Product.findById(_id)
         },
+        products: async (parent, args, context, info) => {
+            const query = {};
+            if (args.category) {
+              query.category = args.category;
+            }
+            if (args.name) {
+              query.name = { $regex: new RegExp(args.name, 'i') };
+            }
+            const products = await Product.find(query);
+            return products;
+          },
         order: async (parent, { _id }, context) => {
             if (context.user) {
                 const user = await User.findById(context.user._id)
@@ -55,7 +68,7 @@ const resolvers = {
                         path: 'orders.products'
                     });
 
-                return user.orders.id(_id);
+                return user.orders(_id);
             }
             throw new AuthenticationError('Not logged in');
         }
@@ -83,6 +96,15 @@ const resolvers = {
 
             return { token, user };
         },
+        addOrder: async (parent, { product }, context) => {
+            if (context.user) {
+              const order = new Order({ products: [product] });
+              
+              await User.findByIdAndUpdate(context.user._id, { $push: { orders: order } });
+              return order;
+            }
+            throw new AuthenticationError('Not logged in');
+          },
         addShop: async (parent, args, context) => {
             // Retrieve the current logged-in user from the context
             const user = await User.findOne({ _id: context.user._id });
@@ -101,65 +123,121 @@ const resolvers = {
         addProduct: async (parent, args, context) => {
             // Ensure that the user is logged in
             if (!context.user) {
-              throw new Error("You must be logged in to add a product to the shop");
+                throw new Error("You must be logged in to add a product to the shop");
             }
-          
-            // Find the user and shop
-            // const user = await User.findOne({ _id: context.user._id });
+
+
             const shop = await Shop.findOne({ _id: args.shopId });
-          
-            // // Check if the user is the owner of the shop
-            // if (shop.owner !== user._id) {
-            //   throw new Error("Only the owner of the shop can add products to it");
-            // }
-          
+
+
             // Create the product and add it to the shop
             const product = await Product.create(args);
             shop.products.push(product);
             await shop.save();
-          
+
             return product;
-          },
-          
-        addOrder: async (parent, { products }, context) => {
-            if (context.user) {
-                const order = new Order({ products });
-
-                await User.findByIdAndUpdate(context.user._id, { $push: { orders: order } });
-
-                return order;
-            }
-            throw new AuthenticationError('Not logged in');
         },
-        
-        updateShop: async (parent, args, context) => {
+
+        deleteProduct: async (parent, args, context) => {
+            // Ensure that the user is logged in
+            if (!context.user) {
+                throw new Error("You must be logged in to delete a product from the shop");
+            }
+
+            const shop = await Shop.findOne({ _id: args.shopId });
+
+            // Find the product and delete it
+            const product = await Product.findOne({ _id: args.productId });
+            if (!product) {
+                throw new Error("Product not found");
+            }
+            await product.delete();
+
+            // Remove the product from the shop's products array
+            shop.products = shop.products.filter(p => p._id !== product._id);
+
+            // Save the updated shop
+            await shop.save();
+
+            return product;
+        },
+          addOrder: async (parent, { products }, context) => {
             try {
-              // Get the shop ID from the arguments
-              const { shopId } = args;
+              if (context.user) {
+                console.log(`Adding order with products: ${products}`);
           
-              // Get the authenticated user's ID from the context
-              const userId = context.user._id;
+                const order = new Order({ products });
           
-              // Check if the authenticated user is the owner of the shop
-              const shop = await Shop.findOne({ _id: shopId, owner: userId });
-              if (!shop) {
-                throw new Error('You are not the owner of this shop.');
+                console.log(`Saving order: ${order}`);
+          
+                await User.findByIdAndUpdate(context.user._id, { $push: { orders: order } });
+          
+                console.log(`Successfully added order to user's orders array`);
+          
+                return order;
+              }
+              throw new AuthenticationError('Not logged in');
+            } catch (err) {
+              console.error(err);
+              throw new Error(err);
+            }
+          },
+
+        deleteOrder: async (parent, args, context) => {
+            try {
+              // Ensure that the user is logged in and has an ID
+              if (!context.user || !context.user._id) {
+                throw new Error("You must be logged in to delete an order");
               }
           
-              // Update the shop with the provided information
-              const updatedShop = await Shop.findOneAndUpdate(
-                { _id: shopId },
-                { $set: { ...args } },
-                { new: true }
-              );
+              // Retrieve the user from the database
+              const user = await User.findById(context.user._id);
           
-              // Return the updated shop
-              return updatedShop;
-            } catch (error) {
-              throw error;
+              // Find the order and remove it from the user's orders array
+              const order = user.orders.find(order => order.id === args.orderId);
+              if (!order) {
+                throw new Error("Order not found");
+              }
+              user.orders = user.orders.filter(o => o.id !== args.orderId);
+          
+              // Save the modified user to the database
+              await user.save();
+          
+              // Return the deleted order
+              return order;
+            } catch (err) {
+                console.error(err);
+              throw new Error(err);
             }
-          }
-          
+        },
+        updateShop: async (parent, args, context) => {
+            try {
+                // Get the shop ID from the arguments
+                const { shopId } = args;
+
+                // Get the authenticated user's ID from the context
+                const userId = context.user._id;
+
+                // Check if the authenticated user is the owner of the shop
+                const shop = await Shop.findOne({ _id: shopId, owner: userId });
+                if (!shop) {
+                    throw new Error('You are not the owner of this shop.');
+                }
+
+                // Update the shop with the provided information
+                const updatedShop = await Shop.findOneAndUpdate(
+                    { _id: shopId },
+                    { $set: { ...args } },
+                    { new: true }
+                );
+
+                // Return the updated shop
+                return updatedShop;
+            } catch (error) {
+                throw error;
+            }
+        }
+
     }
 }
 
