@@ -50,6 +50,17 @@ const resolvers = {
         product: async (parent, { _id }) => {
             return Product.findById(_id)
         },
+        products: async (parent, args, context, info) => {
+            const query = {};
+            if (args.category) {
+              query.category = args.category;
+            }
+            if (args.name) {
+              query.name = { $regex: new RegExp(args.name, 'i') };
+            }
+            const products = await Product.find(query);
+            return products;
+          },
         order: async (parent, { _id }, context) => {
             if (context.user) {
                 const user = await User.findById(context.user._id)
@@ -85,17 +96,13 @@ const resolvers = {
 
             return { token, user };
         },
-
-        addOrder: async (parent, { products }, context) => {
-            console.log(context);
+        addOrder: async (parent, { product }, context) => {
             if (context.user) {
-              const order = new Order({ products });
-      
+              const order = new Order({ products: [product] });
+              
               await User.findByIdAndUpdate(context.user._id, { $push: { orders: order } });
-      
               return order;
             }
-      
             throw new AuthenticationError('Not logged in');
           },
         addShop: async (parent, args, context) => {

@@ -2,7 +2,7 @@ import NavBarMobile from './components/Mobile/NavBarMobile'
 import Hero from './components/Hero'
 import FeaturedProducts from './components/FeaturedProducts'
 import Footer from './components/Footer'
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import {
   ApolloClient,
@@ -22,6 +22,10 @@ import { Products } from './pages/Products';
 import { Product } from './components/Product';
 import PostProducts from './components/PostProducts';
 import Categories from './components/Categories';
+
+
+import LoadAllProducts from './loadAllProducts';
+
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -48,15 +52,21 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <Nav />
-          <Routes>
-            <Route path='/' element={<Home />} /> 
-            <Route path='/login' element={<Login />} /> 
-            <Route path='/signup' element={<Signup />} /> 
-            {/* <Route path='/postProduct' element={<ProductPage />} /> */}
-          </Routes>
+        <Routes>
+          <Route path='/' element={<Home />}></Route>
+          <Route path='/login' element={<Login />}></Route>
+          <Route path='/signup' element={<Signup />}></Route>
+          {/* <Route path='/postProduct' element={<ProductPage />} /> */}
+        </Routes>
         <div>
           <Categories />
-          <div className='products'> {Products.map((product) => (<Product data={product} /> ))}</div>
+          <div className='products'>
+            {Products.map((product) => <Product data={product} key={product.id} />)}
+          </div>
+        </div>
+
+        <div className="container">
+          <LoadAllProducts />
         </div>
         <NavBarMobile></NavBarMobile>
       </Router>

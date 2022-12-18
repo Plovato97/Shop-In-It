@@ -20,6 +20,9 @@ const productSchema = new Schema({
         required: true,
         min: 0.99
     },
+    category: {
+        type: [String],
+    }
 });
 
 const Product = model('Product', productSchema);
