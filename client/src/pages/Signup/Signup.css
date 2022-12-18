@@ -84,6 +84,39 @@ label {
     margin-right: 20px;
 }
 
+/* Button CSS  */
+
 .submit-btn {
     margin-top: 20px;
+    display: block;
+    margin: 0 auto;
+    padding: 7px 7px 7px 7px;
+    background-color: #3EB2FD;
+    background-image: linear-gradient(1deg, #4F58FD, #149BF3 99%);
+    background-size: calc(100% + 20px) calc(100% + 20px);
+    border-radius: 100px;
+    border-width: 0;
+    box-shadow: none;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    font-size: 1.5rem;
+    height: auto;
+    text-decoration: none;
+}
+
+.submit-btn:active,
+.submit-btn:focus {
+  outline: none;
+}
+
+.submit-btn:hover {
+    background-position: -20px -20px;
+}
+
+.submit-btn:hover {
+  background-position: -20px -20px;
+}
+
+.submit-btn:focus:not(:active) {
+  box-shadow: rgba(40, 170, 255, 0.25) 0 0 0 .125em;
 }
