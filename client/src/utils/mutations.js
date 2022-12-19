@@ -56,19 +56,18 @@ export const ADD_ORDER = gql`
 `;
 
 export const ADD_PRODUCT = gql`
-    mutation addProduct($products: [ID]!) {
-        addProduct(products: $products) {
-            products {
-                _id
-                name
-                description
-                price
-                category {
-                    name
-                }
-            }
+    mutation addProduct($shopId: ID!, $productName: String!, $productDescription: String!, $price: Float!, $productImage: String) {
+        addProduct(shopId: $shopId, productName: $productName, productDescription: $productDescription, price: $price, productImage: $productImage) {
+         _id
+        productName
+        productImage
+        productDescription
+        price
+        category {
+            categoryName
         }
     }
+}
 `;
 
 export const ADD_USER = gql`
