@@ -178,23 +178,6 @@ const resolvers = {
                 throw error;
             }
         },
-        addProduct: async (parent, args, context) => {
-            // Ensure that the user is logged in
-            if (!context.user) {
-                throw new Error("You must be logged in to add a product to the shop");
-            }
-
-            const shop = await Shop.findOne({ _id: args.shopId });
-
-           
-
-            // Create the product and add it to the shop
-            const product = await Product.create(args);
-            shop.product.push(product);
-            await shop.save();
-
-            return product;
-        },
         removeProduct: async (parent, args, context) => {
             try {
                 // Get the authenticated users's ID and the productID

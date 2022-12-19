@@ -4,10 +4,9 @@ export const QUERY_PRODUCTS = gql`
   query getProducts($category: ID) {
     products(category: $category) {
       _id
-      name
-      description
+      productName
+      productDescription
       price
-      quantity
       image
       category {
         _id
@@ -20,18 +19,17 @@ export const QUERY_ALL_PRODUCTS = gql`
   {
     products {
       _id
-      name
-      description
+      productName
+      productDescription
       price
-      quantity
       category {
-        name
+        categoryName
       }
     }
   }
 `;
 
-export const QUERY_USER = gql`
+export const QUERY_ME = gql`
 query User($username: String!) {
   user(username: $username) {
     username
@@ -66,44 +64,50 @@ query User($username: String!) {
 }
 `;
 
-export const QUERY_ME = gql`
-    query me {  
-    _id
-    username
-    email
+export const QUERY_SHOP = gql`
+{
+  me {
+    shop {
+      _id
+      shopTitle
+      shopDescription
+      shopLocation
+      shopHero
+      profilePic
+    }
+  }
+}
+`;
+
+export const QUERY_SHOP_PRODUCTS = gql`
+{
+  me {
+    shop {
+      products {
+        productName
+        productDescription
+        price
+        _id
+      }
+    }
+  }
+}
+`;
+
+export const QUERY_ORDERS = gql `
+{
+  me {
     orders {
       _id
       datePurchased
       products {
         _id
         productName
-        productDescription
         productImage
-        price
-      }
-    }
-    shop {
-      _id
-      shopTitle
-      shopDescription
-      shopHero
-      shopLocation
-      profilePic
-      products {
-        _id
-        productName
         productDescription
-        productImage
         price
       }
     }
   }
-`
-
-export const QUERY_CHECKOUT = gql`
-  query getCheckout($products: [ID]!) {
-    checkout(products: $products) {
-      session
-    }
-  }
+}
 `;

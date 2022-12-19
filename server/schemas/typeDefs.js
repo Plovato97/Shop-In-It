@@ -9,7 +9,7 @@ const typeDefs = gql`
         session: ID
     }
     type Product {
-        productId: ID!
+        _id: ID!
         productName: String!
         productDescription: String
         productImage: String
@@ -59,8 +59,7 @@ const typeDefs = gql`
         addShop(shopTitle: String!, shopDescription: String!, profilePic: String, shopLocation: String, shopHero: String): Shop
         addProduct(shopId: ID!, productName: String!, productDescription: String!, productImage: String, price: Float!): Product
         addOrder(products: [ID]!): Order
-        addProduct(shop: ID!, productName: String!, productDescription: String, productImage: String, price: Float, category: String): Product
-        removeProduct(productId: ID!): Shop
+        removeProduct(_id: ID!): Shop
         updateShop(shopId: ID! shopTitle: String, shopDescription: String, profilePic: String, shopLocation: String, shopHero: String): Shop   
     } 
 `;
