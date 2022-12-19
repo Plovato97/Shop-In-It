@@ -27,8 +27,10 @@
 }
   
 .hero-banner-container h3{
+  position: relative;
   font-size: 4rem;
   margin-top: 4px;
+  z-index: 1;
 }
 
 .hero-banner-container h1{
