@@ -1,0 +1,10 @@
+.mx-1 {
+    list-style-type: none;
+    display: inline-block;
+    margin-left: 1rem;
+}
+
+a {
+    text-decoration: none;
+    color: #77AAF5;
+}

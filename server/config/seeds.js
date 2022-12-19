@@ -38,4 +38,5 @@ db.once('open', async () => {
             name:''
         }
     ])
+    console.log('Products Seeded!');
 })
