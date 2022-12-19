@@ -38,22 +38,26 @@ mutation AddShop(
 `;
 
 export const ADD_ORDER = gql`
-  mutation addOrder($products: [ID]!) {
-    addOrder(products: $products) {
-      purchaseDate
-      products {
+    mutation addOrder($products: [ID]!) {
+        addOrder(products: $products) {
         _id
-        name
-        description
-        price
-        quantity
-        category {
-          name
+         datePurchased
+         products {
+            _id
+            productName
+            productImage
+            productDescription
+            price
+            category {
+                categoryName
+            }
         }
-      }
     }
-  }
+}
 `;
+
+export const DELETE_ORDER = gql `
+ mutation deleteOrder()`
 
 export const ADD_PRODUCT = gql`
     mutation addProduct($shopId: ID!, $productName: String!, $productDescription: String!, $price: Float!, $productImage: String) {
@@ -69,6 +73,10 @@ export const ADD_PRODUCT = gql`
     }
 }
 `;
+
+export const DELETE_PRODUCT = gql`
+    mutation deleteProduct 
+`
 
 export const ADD_USER = gql`
     mutation addUser(
