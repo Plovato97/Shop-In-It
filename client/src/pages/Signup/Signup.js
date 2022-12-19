@@ -48,11 +48,12 @@ function Signup(props) {
     <>
         <div className='container my-1'>
             <Link to='/login'>Login</Link>
+
             
-            <form onSubmit={handleFormSubmit} className='modal-content'>
+            <form onSubmit={handleFormSubmit} className='modal-content-s'>
             <h2>Sign Up</h2>
                 <div className='flex-row space-between my-2 user'>
-                    <label htmlFor='username'>Username:</label>
+                    {/* <label htmlFor='username'>Username</label> */}
                     <input 
                         placeholder='Username'
                         name='username'
@@ -62,7 +63,7 @@ function Signup(props) {
                     />
                 </div>
                 <div className="flex-row space-between my-2 user">
-                    <label htmlFor="email">Email:</label>
+                    {/* <label htmlFor="email">Email:</label> */}
                     <input
                         placeholder="youremail@test.com"
                         name="email"
@@ -72,9 +73,9 @@ function Signup(props) {
                     />
                 </div>
                 <div className="flex-row space-between my-2 user">
-                    <label htmlFor="pwd">Password:</label>
+                    {/* <label htmlFor="pwd">Password:</label> */}
                     <input
-                        placeholder="******"
+                        placeholder="Password"
                         name="password"
                         type="password"
                         id="pwd"

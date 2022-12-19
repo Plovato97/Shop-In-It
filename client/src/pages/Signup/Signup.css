@@ -32,7 +32,8 @@ body.active-modal {
 .overlay {
     background: rgba(49,49,49,0.8);
 }
-.modal-content {
+
+.modal-content-s {
     position: absolute;
     top: 40%;
     left: 50%;
@@ -42,7 +43,24 @@ body.active-modal {
     padding: 14px 28px;
     border-radius: 3px;
     width: 50vw;
-    height: 42vh;
+    height: 38vh;
+    margin-top: 30px;
+    /* max-width: 800px;
+    min-width: 300px; */
+    z-index: 1;
+}
+
+.modal-content-l {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 1.4;
+    background: #f1f1f1;
+    padding: 14px 28px;
+    border-radius: 3px;
+    width: 50vw;
+    height: 30vh;
     margin-top: 30px;
     /* max-width: 800px;
     min-width: 300px; */
@@ -74,14 +92,14 @@ body.active-modal {
 }
 
 .user {
-    margin-bottom: 5px;
+    margin-bottom: 30px;
     justify-content: space-evenly;
-    margin-top: 10%;
+    margin-top: 30px;
 }
 
 label {
     font-size: 2rem;
-    margin-right: 20px;
+    /* margin-right: 20px; */
 }
 
 /* Username */
@@ -92,12 +110,17 @@ input[type=username] {
     padding: 12px 20px;
     border-radius: 4px;
     font-weight: 100;
+    font-size: 1.5rem;
     color: #3EB2FD;
 }
 
 input[type=username]:hover {
     border: 0.125em solid #4F58FD;
     transition: .5s ease-in;
+}
+
+#username {
+    width: 80%;
 }
 
 /* Input Box  */
@@ -108,12 +131,17 @@ input[type=email] {
     padding: 12px 20px;
     border-radius: 4px;
     font-weight: 100;
+    font-size: 1.5rem;
     color: #3EB2FD;
 }
 
 input[type=email]:hover {
     border: 0.125em solid #4F58FD;
     transition: .5s ease-in;
+}
+
+#email {
+    width: 80%;
 }
 
 /* Password Box  */
@@ -124,12 +152,17 @@ input[type=password] {
     padding: 12px 20px;
     border-radius: 4px;
     font-weight: 100;
+    font-size: 1.5rem;
     color: #3EB2FD;
 }
 
 input[type=password]:hover {
     border: 0.125em solid #4F58FD;
     transition: .5s ease-in;
+}
+
+#pwd {
+    width: 80%;
 }
 
 /* Button CSS  */
