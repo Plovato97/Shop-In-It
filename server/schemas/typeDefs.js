@@ -10,14 +10,32 @@ const typeDefs = gql`
     }
     type Product {
         _id: ID!
+<<<<<<< HEAD
         productName: String!
         productDescription: String
         productImage: String
         price: Float
         category: Category
+=======
+        shopId: String
+        productName: String
+        productDescription: String
+        productImage: String
+        price: Float
+        category: [String]
+>>>>>>> develop
     }
+    input ProductInput {
+  _id: ID!
+  shopId: String
+  productName: String
+  productDescription: String
+  productImage: String
+  price: Float
+  category: [String]
+}
     type Order {
-        _id: ID!
+        _id: ID
         datePurchased: String
         products: [Product]
     }
@@ -46,6 +64,7 @@ const typeDefs = gql`
         categories: [Category]
         products(category: ID, name: String): [Product]
         product(_id: ID!): Product
+        products(category: String, name: String): [Product]
         order(_id: ID!): Order
         checkout(products: [ID]!): Checkout
         shops: [Shop]
@@ -57,11 +76,14 @@ const typeDefs = gql`
         login(email: String!, password: String!): Auth
         addUser(username: String!, email: String!, password: String!): Auth
         addShop(shopTitle: String!, shopDescription: String!, profilePic: String, shopLocation: String, shopHero: String): Shop
-        addProduct(shopId: ID!, productName: String!, productDescription: String!, productImage: String, price: Float!): Product
-        addOrder(products: [ID]!): Order
-        removeProduct(_id: ID!): Shop
-        updateShop(shopId: ID! shopTitle: String, shopDescription: String, profilePic: String, shopLocation: String, shopHero: String): Shop   
-    } 
+        addProduct(shopId: ID! productName: String!, productDescription: String!, productImage: String, price: Float!, category: [String]): Product
+        deleteProduct(shopId: ID! productId: ID!): Product
+        addOrder(product: ProductInput!): Order
+        deleteOrder(orderId: ID!): Order
+        updateShop(shopId: ID! shopTitle: String, shopDescription: String, profilePic: String, shopLocation: String, shopHero: String): Shop    
+        
+}
+
 `;
 
 module.exports = typeDefs;

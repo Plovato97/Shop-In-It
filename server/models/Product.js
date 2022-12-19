@@ -1,6 +1,9 @@
 const { Schema, model } = require('mongoose');
 
 const productSchema = new Schema({
+    shopID: {
+        type: String,
+    },
     productName: {
         type: String,
         required: true,
@@ -18,9 +21,13 @@ const productSchema = new Schema({
         min: 0.99
     },
     category: {
+<<<<<<< HEAD
         type: Schema.Types.ObjectId,
         ref: 'Category',
         required: false
+=======
+        type: [String],
+>>>>>>> develop
     }
 });
 
