@@ -1,0 +1,23 @@
+#user-products {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    width: 90%;
+    height: fit-content;
+    margin: 90px auto;
+
+    .settings {
+        position: fixed;
+        bottom: 25px;
+        right: 25px;
+        font-size: 2.5rem;
+        cursor: pointer;
+        color: map-get($colors, secondary-color );
+
+        .setting-links {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+}

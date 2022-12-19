@@ -12,7 +12,8 @@ const NavBarMobile = (
 ) => {
 
   const handleNavBar = (e) => {
-    console.log(e.target.getAttribute)
+    // console.log(e.target.dataset.home)
+    console.log(e.target.attributes[1])
   }
 
   return (

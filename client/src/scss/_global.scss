@@ -20,6 +20,11 @@ button {
     font-family: 'Quicksand', sans-serif;
 }
 
+a {
+    text-decoration: none;
+    color: map-get($colors, secondary-color )
+}
+
 .card {
     @include ProductCard;
 }
