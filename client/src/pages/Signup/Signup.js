@@ -48,12 +48,11 @@ function Signup(props) {
     <>
         <div className='container my-1'>
             <Link to='/login'>Login</Link>
-
             
             <form onSubmit={handleFormSubmit} className='modal-content'>
             <h2>Sign Up</h2>
                 <div className='flex-row space-between my-2 user'>
-                    <label htmlFor='username'>Username</label>
+                    <label htmlFor='username'>Username:</label>
                     <input 
                         placeholder='Username'
                         name='username'
