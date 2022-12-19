@@ -10,30 +10,22 @@ const typeDefs = gql`
     }
     type Product {
         _id: ID!
-<<<<<<< HEAD
-        productName: String!
-        productDescription: String
-        productImage: String
-        price: Float
-        category: Category
-=======
         shopId: String
         productName: String
         productDescription: String
         productImage: String
         price: Float
         category: [String]
->>>>>>> develop
     }
     input ProductInput {
-  _id: ID!
-  shopId: String
-  productName: String
-  productDescription: String
-  productImage: String
-  price: Float
-  category: [String]
-}
+        _id: ID!
+        shopId: String
+        productName: String
+        productDescription: String
+         productImage: String
+        price: Float
+        category: [String]
+    }
     type Order {
         _id: ID
         datePurchased: String
@@ -62,7 +54,6 @@ const typeDefs = gql`
     type Query {
         me: User
         categories: [Category]
-        products(category: ID, name: String): [Product]
         product(_id: ID!): Product
         products(category: String, name: String): [Product]
         order(_id: ID!): Order
@@ -82,8 +73,7 @@ const typeDefs = gql`
         deleteOrder(orderId: ID!): Order
         updateShop(shopId: ID! shopTitle: String, shopDescription: String, profilePic: String, shopLocation: String, shopHero: String): Shop    
         
-}
-
+    }
 `;
 
 module.exports = typeDefs;

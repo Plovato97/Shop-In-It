@@ -75,8 +75,16 @@ export const ADD_PRODUCT = gql`
 `;
 
 export const DELETE_PRODUCT = gql`
-    mutation deleteProduct 
-`
+    mutation deleteProduct ($shopId: ID!, $productId: ID!) {
+        deleteProduct(shopId: $shopId, productId: $productId) {
+          _id
+          productName
+          productImage
+          productDescription
+          price
+        }
+    }
+`;
 
 export const ADD_USER = gql`
     mutation addUser(
