@@ -56,6 +56,7 @@ function App() {
           </Routes>
         <div>
           <Categories />
+          <Hero />
           <div className='products'> {Products.map((product) => (<Product data={product} /> ))}</div>
         </div>
         <NavBarMobile></NavBarMobile>
