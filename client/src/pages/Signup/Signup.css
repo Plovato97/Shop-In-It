@@ -84,6 +84,54 @@ label {
     margin-right: 20px;
 }
 
+/* Username */
+
+input[type=username] {
+    background-color: transparent;
+    border: 0.125em solid #3EB2FD;
+    padding: 12px 20px;
+    border-radius: 4px;
+    font-weight: 100;
+    color: #3EB2FD;
+}
+
+input[type=username]:hover {
+    border: 0.125em solid #4F58FD;
+    transition: .5s ease-in;
+}
+
+/* Input Box  */
+
+input[type=email] {
+    background-color: transparent;
+    border: 0.125em solid #3EB2FD;
+    padding: 12px 20px;
+    border-radius: 4px;
+    font-weight: 100;
+    color: #3EB2FD;
+}
+
+input[type=email]:hover {
+    border: 0.125em solid #4F58FD;
+    transition: .5s ease-in;
+}
+
+/* Password Box  */
+
+input[type=password] {
+    background-color: transparent;
+    border: 0.125em solid #3EB2FD;
+    padding: 12px 20px;
+    border-radius: 4px;
+    font-weight: 100;
+    color: #3EB2FD;
+}
+
+input[type=password]:hover {
+    border: 0.125em solid #4F58FD;
+    transition: .5s ease-in;
+}
+
 /* Button CSS  */
 
 .submit-btn {
