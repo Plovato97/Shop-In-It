@@ -41,9 +41,9 @@
 .hero-banner-image{
   position: absolute;
   top: 20%;
-  right:20%;
-  width: 450px;
-  height: 350px;
+  right: 28%;
+  width: 40vw;
+  height: 34vh;
 }
   
 .desc{

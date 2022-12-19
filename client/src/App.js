@@ -22,6 +22,7 @@ import { Products } from './pages/Products';
 import { Product } from './components/Product';
 import PostProducts from './components/PostProducts';
 import Categories from './components/Categories';
+import HeroTop from './components/HeroTop';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -55,6 +56,7 @@ function App() {
             {/* <Route path='/postProduct' element={<ProductPage />} /> */}
           </Routes>
         <div>
+          <HeroTop />
           <Categories />
           <Hero />
           <div className='products'> {Products.map((product) => (<Product data={product} /> ))}</div>
