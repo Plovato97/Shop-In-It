@@ -85,7 +85,7 @@ button {
     color: #015EEC; }
   #nav-mobile .nav-shopCar_container {
     display: flex;
-    align-items: center; }
+    align-items: center; float: right;}
     #nav-mobile .nav-shopCar_container .nav-shopCar-icon {
       position: relative;
       margin: 20px; }
