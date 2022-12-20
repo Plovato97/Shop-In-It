@@ -30,7 +30,7 @@ import HeroTop from './components/HeroTop';
 
 // import LoadAllProducts from './pages/loadAllProducts';
 
-import 'react-tippy/dist/tippy.css';
+// import 'react-tippy/dist/tippy.css';
 
 const httpLink = createHttpLink({
   uri: '/graphql',

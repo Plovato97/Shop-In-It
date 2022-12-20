@@ -1,6 +1,6 @@
 import React from 'react'
 import ProductCard from '../Elements/ProductCard'
-import {Tooltip} from 'react-tippy'
+// import {Tooltip} from 'react-tippy'
 
 const UserProducts = () => {
   return (
@@ -10,7 +10,7 @@ const UserProducts = () => {
         <ProductCard></ProductCard>
 
         <div className='settings'>
-        <Tooltip 
+        {/* <Tooltip  */}
             title="Welcome to React"
             position="top"
             trigger="click"
@@ -26,7 +26,7 @@ const UserProducts = () => {
             }
         >
             <i class="fa-solid fa-gear"></i>
-        </Tooltip>
+        {/* </Tooltip> */}
         </div>
 
     </section>
