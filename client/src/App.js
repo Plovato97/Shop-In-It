@@ -25,7 +25,7 @@ import Categories from './components/Categories';
 import HeroTop from './components/HeroTop';
 
 
-import LoadAllProducts from './loadAllProducts';
+// import LoadAllProducts from './pages/loadAllProducts';
 
 
 const httpLink = createHttpLink({
@@ -69,7 +69,7 @@ function App() {
         </div>
 
         <div className="container">
-          <LoadAllProducts />
+          {/* <LoadAllProducts /> */}
         </div>
         <NavBarMobile></NavBarMobile>
       </Router>
