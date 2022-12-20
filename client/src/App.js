@@ -21,10 +21,10 @@ import Nav from './components/Nav';
 import { Products } from './pages/Products';
 import { Product } from './components/Product';
 import PostProducts from './components/PostProducts';
-import Categories from './components/Categories';
+// import Categories from './components/Categories';
 
 
-import LoadAllProducts from './loadAllProducts';
+// import LoadAllProducts from './loadAllProducts';
 
 
 const httpLink = createHttpLink({
@@ -59,14 +59,14 @@ function App() {
           {/* <Route path='/postProduct' element={<ProductPage />} /> */}
         </Routes>
         <div>
-          <Categories />
+          {/* <Categories /> */}
           <div className='products'>
             {Products.map((product) => <Product data={product} key={product.id} />)}
           </div>
         </div>
 
         <div className="container">
-          <LoadAllProducts />
+          {/* <LoadAllProducts /> */}
         </div>
         <NavBarMobile></NavBarMobile>
       </Router>
