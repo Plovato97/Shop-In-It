@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
-import { ADD_SHOP } from './queries';  // Import the addShop mutation
+import { ADD_SHOP } from '../utils/mutations';  // Import the addShop mutation
 
-function App() {
+function Shop() {
   const [addShop, { data }] = useMutation(ADD_SHOP);  // Declare the addShop function using the useMutation hook
 
   const [shopTitle, setShopTitle] = useState('');  // Declare state variables to store the shop fields
@@ -67,3 +67,5 @@ function App() {
     </form>
   );
 }  
+
+export default Shop;

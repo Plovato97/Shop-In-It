@@ -92,6 +92,7 @@ export const QUERY_SHOP = gql`
 export const QUERY_SHOP_PRODUCTS = gql`
 {
   me {
+    _id
     shop {
       products {
         productName

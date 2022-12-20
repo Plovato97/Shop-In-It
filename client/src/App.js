@@ -24,7 +24,7 @@ import PostProducts from './components/PostProducts';
 import Categories from './components/Categories';
 
 
-import LoadAllProducts from './loadAllProducts';
+import LoadAllProducts from './pages/loadAllProducts';
 
 
 const httpLink = createHttpLink({
