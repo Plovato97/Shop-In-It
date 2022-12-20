@@ -16,6 +16,9 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup/Signup';
 // import { StoreProvider } from './utils/GlobalState';
+// import Signup from './pages/Signup';
+import UserPage from './pages/UserPage';
+import { StoreProvider } from './utils/GlobalState';
 import Nav from './components/Nav';
 // import ProductPage from './components/ProductPost';
 import { Products } from './pages/Products';
@@ -25,8 +28,9 @@ import Categories from './components/Categories';
 import HeroTop from './components/HeroTop';
 
 
-import LoadAllProducts from './loadAllProducts';
+// import LoadAllProducts from './loadAllProducts';
 
+import 'react-tippy/dist/tippy.css';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -69,7 +73,7 @@ function App() {
         </div>
 
         <div className="container">
-          <LoadAllProducts />
+          {/* <LoadAllProducts /> */}
         </div>
         <NavBarMobile></NavBarMobile>
       </Router>

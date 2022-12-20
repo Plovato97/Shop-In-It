@@ -17,7 +17,25 @@
         color: map-get($colors, primary-color )
     }
 
-    .nav-shopCar_container {
-        @include NavShopCar;
+    .nav-links {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        gap: 50px;
+        font-size: 2.5rem;
+
+        i {
+            cursor: pointer;
+        }
+
+        .fa-magnifying-glass, .fa-user {
+            display: none;
+        }
+
+        .nav-shopCar_container {
+            @include NavShopCar;
+        }
     }
+
+    
 }

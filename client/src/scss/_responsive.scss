@@ -1,0 +1,20 @@
+@media (min-width: 850px) {
+    #nav-bar {
+        display: none;
+    }
+
+    #featured-products {
+        .products-cards_container {
+            gap: 50px;
+        }
+    }
+    
+    #nav-mobile {
+        .nav-links  {
+            .fa-magnifying-glass, .fa-user {
+                display: block;
+            }
+        }
+    }
+
+}

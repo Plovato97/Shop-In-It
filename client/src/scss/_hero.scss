@@ -42,10 +42,13 @@
 
         .hero-input-container {
             margin: 15px 0;
+            width: 100%;
 
             input {
                 padding: 10px;
-                width: 220px;
+                width: 50%;
+                max-width: 420px;
+                // min-width: 220px;
                 border-radius: 10px 0 0 10px;
                 border: none;
             }

@@ -13,7 +13,16 @@
         right: 25px;
         font-size: 2.5rem;
         cursor: pointer;
+<<<<<<< HEAD
         color: map-get($colors, secondary-color );
 
+=======
+        color: map-get($colors, primary-color );
+
+        .setting-links {
+            display: flex;
+            flex-direction: column;
+        }
+>>>>>>> johan-branch
     }
 }
