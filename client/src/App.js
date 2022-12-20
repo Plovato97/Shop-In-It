@@ -16,6 +16,9 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup/Signup';
 // import { StoreProvider } from './utils/GlobalState';
+// import Signup from './pages/Signup';
+import UserPage from './pages/UserPage';
+import { StoreProvider } from './utils/GlobalState';
 import Nav from './components/Nav';
 // import ProductPage from './components/ProductPost';
 import { Products } from './pages/Products';
@@ -27,6 +30,7 @@ import HeroTop from './components/HeroTop';
 
 // import LoadAllProducts from './pages/loadAllProducts';
 
+import 'react-tippy/dist/tippy.css';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -57,6 +61,7 @@ function App() {
           <Route path='/' element={<Home />}></Route>
           <Route path='/login' element={<Login />}></Route>
           <Route path='/signup' element={<Signup />}></Route>
+          <Route path='/user' element={<UserPage />}></Route>
           {/* <Route path='/postProduct' element={<ProductPage />} /> */}
         </Routes>
         <div>
