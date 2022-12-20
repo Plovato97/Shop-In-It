@@ -30,14 +30,28 @@ function Login(props) {
         });
     };
 
+    // Modal Function
+    const [modal, setModal] = useState(false);
+
+    const toggleModal = () => {
+        setModal(!modal)
+    };
+
+    if(modal) {
+        document.body.classList.add('active-modal')
+      } else {
+        document.body.classList.remove('active-modal')
+      }
+
     return (
+        <>
         <div className="container my-1">
             <Link to="/signup">Signup</Link>
 
+            <form onSubmit={handleFormSubmit} className='modal-content-l'>
             <h2>Login</h2>
-            <form onSubmit={handleFormSubmit}>
-                <div className="flex-row space-between my-2">
-                    <label htmlFor="email">Email address:</label>
+                <div className="flex-row space-between my-2 user">
+                    {/* <label htmlFor="email">Email address:</label> */}
                     <input
                         placeholder="youremail@test.com"
                         name="email"
@@ -46,10 +60,10 @@ function Login(props) {
                         onChange={handleChange}
                     />
                 </div>
-                <div className="flex-row space-between my-2">
-                    <label htmlFor="pwd">Password:</label>
+                <div className="flex-row space-between my-2 user">
+                    {/* <label htmlFor="pwd">Password:</label> */}
                     <input
-                        placeholder="******"
+                        placeholder="Password"
                         name="password"
                         type="password"
                         id="pwd"
@@ -62,10 +76,12 @@ function Login(props) {
                     </div>
                 ) : null}
                 <div className="flex-row flex-end">
-                    <button type="submit">Submit</button>
+                    <button type="submit" className='submit-btn'>Submit</button>
                 </div>
+                <Link to='/' className='close-modal'>Close</Link>
             </form>
         </div>
+        </>
     );
 };
 

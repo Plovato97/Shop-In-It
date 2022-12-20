@@ -47,7 +47,7 @@ function Signup(props) {
     return (
     <>
         <div className='container my-1'>
-            <Link to="/login">Testing Login</Link>
+            <Link to='/login'>Login</Link>
 
             
             <form onSubmit={handleFormSubmit} className='modal-content-s'>

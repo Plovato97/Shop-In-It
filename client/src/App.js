@@ -25,7 +25,7 @@ import Categories from './components/Categories';
 import HeroTop from './components/HeroTop';
 
 
-// import LoadAllProducts from './loadAllProducts';
+// import LoadAllProducts from './pages/loadAllProducts';
 
 
 const httpLink = createHttpLink({
@@ -61,7 +61,7 @@ function App() {
         </Routes>
         <div>
           <HeroTop />
-          {/* <Categories /> */}
+          <Categories />
           <Hero />
           <div className='products'>
             {Products.map((product) => <Product data={product} key={product.id} />)}
