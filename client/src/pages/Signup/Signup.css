@@ -44,7 +44,7 @@ body.active-modal {
     padding: 14px 28px;
     border-radius: 3px;
     width: 50vw;
-    height: 42vh;
+    height: 37vh;
     margin-top: 30px;
     /* max-width: 800px;
     min-width: 300px; */
@@ -64,7 +64,7 @@ body.active-modal {
     padding: 14px 28px;
     border-radius: 3px;
     width: 50vw;
-    height: 35vh;
+    height: 30vh;
     margin-top: 30px;
     /* max-width: 800px;
     min-width: 300px; */
@@ -74,6 +74,8 @@ body.active-modal {
 }
 
 .close-modal {
+    margin-top: 20px;
+    margin-left: 5px;
     font-size: 20px;
 }
 
