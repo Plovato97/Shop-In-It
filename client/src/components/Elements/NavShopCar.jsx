@@ -20,7 +20,7 @@ const NavShopCar = () => {
       if (Auth.loggedIn()) {
 
           return (
-               <ul className='flex-row'>
+               <ul className='flex-row-a'>
                   <li className='mx-1'>
                     <Link to='/user'>
                     <i class="fa-solid fa-user"></i>
@@ -52,7 +52,7 @@ const NavShopCar = () => {
   }
 
   return (
-    <div className='testing'>
+    <div>
       <div className='nav-shopCar_container'>
         <div className='nav-shopCar-icon'>
           <Link to='/cart'>
