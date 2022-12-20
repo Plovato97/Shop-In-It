@@ -1,7 +1,16 @@
+.flex-row {
+    width: 40%;
+    display: inline-block;
+}
+
 .mx-1 {
     list-style-type: none;
+    width: 70%;
+    padding: auto;
     display: inline-block;
-    margin-left: 1rem;
+    margin-left: 2rem;
+    margin-right: 50px;
+    margin-top: 10px;
 }
 
 a {

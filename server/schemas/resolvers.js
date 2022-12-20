@@ -50,8 +50,6 @@ const resolvers = {
         product: async (parent, { _id }) => {
             return Product.findById(_id)
         },
-<<<<<<< HEAD
-=======
         products: async (parent, args, context, info) => {
             const query = {};
             if (args.category) {
@@ -63,7 +61,6 @@ const resolvers = {
             const products = await Product.find(query);
             return products;
           },
->>>>>>> a45dd7d07848180152f1892a662e03e1c459b348
         order: async (parent, { _id }, context) => {
             if (context.user) {
                 const user = await User.findById(context.user._id)
@@ -123,15 +120,6 @@ const resolvers = {
 
             return shop;
         },
-<<<<<<< HEAD
-        addOrder: async (parent, { products }, context) => {
-            if (context.user) {
-                const order = new Order({ products });
-
-                await User.findByIdAndUpdate(context.user._id, { $push: { orders: order } });
-
-                return order;
-=======
         addProduct: async (parent, args, context) => {
             // Ensure that the user is logged in
             if (!context.user) {
@@ -247,7 +235,6 @@ const resolvers = {
                 return updatedShop;
             } catch (error) {
                 throw error;
->>>>>>> a45dd7d07848180152f1892a662e03e1c459b348
             }
         }
 
