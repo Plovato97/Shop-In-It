@@ -5,6 +5,10 @@ const orderSchema = new Schema({
         type: Date,
         default: Date.now
     },
+    productId: {
+        type: String,
+        required: true
+    },
     products: [
         {
             type: Schema.Types.ObjectId,

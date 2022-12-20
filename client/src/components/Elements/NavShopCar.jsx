@@ -50,7 +50,7 @@ const NavShopCar = () => {
     <div>
       <div className='nav-shopCar_container'>
         <div className='nav-shopCar-icon'>
-          <i class="fa-solid fa-cart-shopping"></i>
+          <i className="fa-solid fa-cart-shopping"></i>
           <span className='nav-shopCar-count'>1</span>
         </div>
 
@@ -58,7 +58,7 @@ const NavShopCar = () => {
           <p className='shopCar-p'>My cart</p>
           <p className='shopCar-amount shopCar-amount_green'>$21</p>
           <i 
-            class="fa-solid fa-angle-down"
+            className="fa-solid fa-angle-down"
             onClick={hanldeCarList}
           ></i>
 
