@@ -55,7 +55,9 @@ const NavShopCar = () => {
     <div>
       <div className='nav-shopCar_container'>
         <div className='nav-shopCar-icon'>
-          <i className="fa-solid fa-cart-shopping"></i>
+          <Link to='/cart'>
+            <i className="fa-solid fa-cart-shopping"></i>
+          </Link>
           <span className='nav-shopCar-count'>1</span>
         </div>
 

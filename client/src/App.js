@@ -15,6 +15,7 @@ import { setContext } from '@apollo/client/link/context';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup/Signup';
+import Cart from './pages/CartPage/Cart';
 // import { StoreProvider } from './utils/GlobalState';
 // import Signup from './pages/Signup';
 import UserPage from './pages/UserPage';
@@ -62,6 +63,7 @@ function App() {
           <Route path='/login' element={<Login />}></Route>
           <Route path='/signup' element={<Signup />}></Route>
           <Route path='/user' element={<UserPage />}></Route>
+          <Route path='/cart' element={<Cart />}></Route>
           {/* <Route path='/postProduct' element={<ProductPage />} /> */}
         </Routes>
         <div>
@@ -73,10 +75,10 @@ function App() {
           </div>
         </div>
 
-        <div className="container">
-          {/* <LoadAllProducts /> */}
+        {/* <div className="container">
+          <LoadAllProducts />
         </div>
-        <NavBarMobile></NavBarMobile>
+        <NavBarMobile></NavBarMobile> */}
       </Router>
     </ApolloProvider>
   );
