@@ -47,7 +47,7 @@ const NavShopCar = () => {
   }
 
   return (
-    <div>
+    <div className='testing'>
       <div className='nav-shopCar_container'>
         <div className='nav-shopCar-icon'>
           <i className="fa-solid fa-cart-shopping"></i>
