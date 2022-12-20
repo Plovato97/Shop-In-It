@@ -28,35 +28,46 @@ export const QUERY_ALL_PRODUCTS = gql`
   }
 `;
 
-export const QUERY_ME = gql`
-query User($username: String!) {
-  user(username: $username) {
-    username
-    email
+export const QUERY_USER = gql`
+{
+  me {
     _id
+    email
+    username
+  }
+}
+`;
+
+export const QUERY_ME = gql`
+{
+  me {
+    _id
+    email
+    username
     orders {
       _id
       datePurchased
+      products {
+        _id
+        productName
+        productImage
+        productDescription
+        price
+        shopId
+      }
+    }
+    shop {
+      _id
+      shopTitle
+      shopLocation
+      shopHero
+      shopDescription
       products {
         productName
         productImage
         productDescription
         price
         _id
-      }
-    }
-    shop {
-      shopTitle
-      shopLocation
-      shopHero
-      shopDescription
-      profilePic
-      _id
-      products {
-        _id
-        productName
-        productDescription
-        productImage
       }
     }
   }
