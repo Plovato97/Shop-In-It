@@ -77,15 +77,16 @@ button {
   background-color: #F5F5F7;
   border-bottom: 1px solid #dfdede;
   font-size: 1.8rem;
-  box-shadow: 8px 10px 15px -8px rgba(0, 0, 0, 0.1); 
-  transition: top 0.3s; /* Transition effect when sliding down (and up) */
+  box-shadow: 8px 10px 15px -8px rgba(0, 0, 0, 0.1);
+  transition: top 0.3s; /* Transition effect when sliding down (and up) */ 
 }
   #nav-mobile .logo {
     font-size: 3rem;
     color: #015EEC; }
   #nav-mobile .nav-shopCar_container {
     display: flex;
-    align-items: center; float: right;}
+    align-items: center; 
+    float: right;}
     #nav-mobile .nav-shopCar_container .nav-shopCar-icon {
       position: relative;
       margin: 20px; }
@@ -108,7 +109,7 @@ button {
       #nav-mobile .nav-shopCar_container .nav-shopCar-info .shopCar-amount {
         font-size: 1.6rem; }
       #nav-mobile .nav-shopCar_container .nav-shopCar-info .shopCar-amount_green {
-        color: #06B390; }
+        color: #06B390;  }
       #nav-mobile .nav-shopCar_container .nav-shopCar-info .fa-angle-down {
         position: absolute;
         bottom: 0px;
@@ -150,6 +151,31 @@ button {
               font-size: 1.5rem;
               text-overflow: ellipsis; }
 
+/* Reveal Stuff -Benny */
+.reveal {
+  position: relative;
+  transform: translateY(0);
+  opacity: 1;
+  transition: 2s all ease;
+}
+
+.reveal.active{
+  transform: translateY(150px);
+  opacity: 0;
+}
+
+.reveal-element {
+  position: relative;
+  transform: translateY(150px);
+  opacity: 0;
+  transition: all 3s ease;
+}
+
+.reveal-element.active {
+  transform: translateY(0px);
+  opacity: 1;
+}
+
 #nav-bar {
   position: fixed;
   display: flex;
@@ -167,7 +193,9 @@ button {
   color: #77AAF5;
   background-color: #015EEC;
   box-shadow: 8px 10px 50px -8px rgba(0, 0, 0, 0.1);
-  z-index: 10; }
+  z-index: 10;
+}
+  
   #nav-bar i {
     padding: 10px 20px;
     cursor: pointer; }
