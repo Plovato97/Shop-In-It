@@ -1,0 +1,212 @@
+.container .overlay{
+    width: 300vw;
+    height: 300vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+}
+
+body.active-modal {
+    overflow-y: hidden;
+}
+
+.btn-modal {
+    padding: 10px 20px;
+    display: block;
+    margin: 100px auto 0;
+    font-size: 18px;
+}
+
+.modal, .overlay {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+}
+
+.overlay {
+    background: rgba(49,49,49,0.8);
+}
+
+.modal-content-s {
+    position: absolute;
+    box-shadow: 8px 10px 50px -8px rgba(0, 0, 0, 0.1);
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 1.4;
+    background: #f1f1f1;
+    padding: 14px 28px;
+    border-radius: 3px;
+    width: 50vw;
+    height: 37vh;
+    margin-top: 30px;
+    /* max-width: 800px;
+    min-width: 300px; */
+    z-index: 6;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-content-l {
+    position: absolute;
+    box-shadow: 8px 10px 50px -8px rgba(0, 0, 0, 0.1);
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 1.4;
+    background: #f1f1f1;
+    padding: 14px 28px;
+    border-radius: 3px;
+    width: 50vw;
+    height: 30vh;
+    margin-top: 30px;
+    /* max-width: 800px;
+    min-width: 300px; */
+    z-index: 6;
+    display: flex;
+    flex-direction: column;
+}
+
+.close-modal {
+    margin-top: 20px;
+    margin-left: 5px;
+    font-size: 20px;
+}
+
+/* CSS FOR ACTUAL SIGN UP  */
+
+.flex-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.flex-end {
+  justify-content: flex-end;
+}
+
+.mx-2 {
+  margin-right: var(--spacing-two);
+  margin-left: var(--spacing-two);
+}
+
+.user {
+    /* margin-bottom: 30px; */
+    justify-content: space-evenly;
+    margin-top: 20px;
+}
+
+label {
+    font-size: 2rem;
+    /* margin-right: 20px; */
+}
+
+/* Username */
+
+input[type=username] {
+    background-color: transparent;
+    border: 0.125em solid #3EB2FD;
+    padding: 12px 20px;
+    border-radius: 4px;
+    font-weight: 100;
+    font-size: 1.5rem;
+    color: #3EB2FD;
+}
+
+input[type=username]:hover {
+    border: 0.125em solid #4F58FD;
+    transition: .5s ease-in;
+}
+
+#username {
+    width: 45vw;
+}
+
+/* Input Box  */
+
+input[type=email] {
+    background-color: transparent;
+    border: 0.125em solid #3EB2FD;
+    padding: 12px 20px;
+    border-radius: 4px;
+    font-weight: 100;
+    font-size: 1.5rem;
+    color: #3EB2FD;
+}
+
+input[type=email]:hover {
+    border: 0.125em solid #4F58FD;
+    transition: .5s ease-in;
+}
+
+#email {
+    width: 45vw;
+}
+
+/* Password Box  */
+
+input[type=password] {
+    background-color: transparent;
+    border: 0.125em solid #3EB2FD;
+    padding: 12px 20px;
+    border-radius: 4px;
+    font-weight: 100;
+    font-size: 1.5rem;
+    color: #3EB2FD;
+}
+
+input[type=password]:hover {
+    border: 0.125em solid #4F58FD;
+    transition: .5s ease-in;
+}
+
+#pwd {
+    width: 45vw;
+}
+
+/* Button CSS  */
+
+.submit-btn {
+    margin-top: 20px;
+    display: block;
+    padding: 7px 7px 7px 7px;
+    background-color: #3EB2FD;
+    background-image: linear-gradient(1deg, #4F58FD, #149BF3 99%);
+    background-size: calc(100% + 20px) calc(100% + 20px);
+    border-radius: 100px;
+    border-width: 0;
+    box-shadow: none;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    font-size: 2rem;
+    height: auto;
+    text-decoration: none;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.submit-btn:active,
+.submit-btn:focus {
+  outline: none;
+}
+
+.submit-btn:hover {
+    background-position: -20px -20px;
+}
+
+.submit-btn:hover {
+  background-position: -20px -20px;
+}
+
+.submit-btn:focus:not(:active) {
+  box-shadow: rgba(40, 170, 255, 0.25) 0 0 0 .125em;
+}

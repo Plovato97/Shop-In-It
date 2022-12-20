@@ -19,6 +19,9 @@ const userSchema = new Schema(
       required: true,
       minlength: 5
     },
+    stripeCustomerId: {
+      type: String,
+    },
     orders: [
       {
         type: Schema.Types.ObjectId,

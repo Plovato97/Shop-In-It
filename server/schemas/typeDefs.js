@@ -4,6 +4,10 @@ const typeDefs = gql`
     type Checkout {
         session: ID
     }
+    type Category {
+    _id: ID
+    name: String
+  }
     type Product {
         _id: ID!
         shopId: String
@@ -11,7 +15,7 @@ const typeDefs = gql`
         productDescription: String
         productImage: String
         price: Float
-        category: [String]
+        category: [Category]
     }
     input ProductInput {
   _id: ID!
@@ -31,6 +35,7 @@ const typeDefs = gql`
         _id: ID!
         username: String!
         email: String
+        stripeCustomerId: String
         orders: [Order]
         shop: Shop
     }
@@ -47,6 +52,17 @@ const typeDefs = gql`
         token: ID!
         user: User
     }
+    input CustomerInput {
+  name: String!
+  email: String!
+  description: String
+}
+type Customer {
+  id: ID!
+  name: String!
+  email: String!
+  description: String
+}
     type Query {
         me: User
         product(_id: ID!): Product
@@ -60,13 +76,14 @@ const typeDefs = gql`
     }
     type Mutation {
         login(email: String!, password: String!): Auth
-        addUser(username: String!, email: String!, password: String!): Auth
+        addUser(username: String!, email: String!, password: String!, stripeCustomerId: String): Auth
         addShop(shopTitle: String!, shopDescription: String!, profilePic: String, shopLocation: String, shopHero: String): Shop
         addProduct(shopId: ID! productName: String!, productDescription: String!, productImage: String, price: Float!, category: [String]): Product
         deleteProduct(shopId: ID! productId: ID!): Product
-        addOrder(product: ProductInput!): Order
+        addOrder(products: [ID]!): Order
         deleteOrder(orderId: ID!): Order
         updateShop(shopId: ID! shopTitle: String, shopDescription: String, profilePic: String, shopLocation: String, shopHero: String): Shop    
+        createCustomer(input: CustomerInput!): Customer
         
 }
 
