@@ -3,6 +3,7 @@ import { useMutation } from '@apollo/client';
 import { ADD_SHOP } from '../utils/mutations';  // Import the addShop mutation
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import './Shop/shop.css';
 
 
 function AddShop() {
@@ -54,43 +55,48 @@ function AddShop() {
 
     return (
 
-            <form onSubmit={handleSubmit} className='modal-content-l'>
+            <form onSubmit={handleSubmit} className='modal-content-w'>
 
                 {/* Render a form that allows the user to enter the shop fields */}
-                <label htmlFor='shopTitle'>Shop Title:</label>
+                {/* <label htmlFor='shopTitle'>Shop Title:</label> */}
                 <input
-                    type='text'
+                    placeholder='Shop Title'
+                    type='title'
                     value={shopTitle}
                     onChange={(event) => setShopTitle(event.target.value)}
                 />
-                <label htmlFor='shopDescription'>Shop Description:</label>
+                {/* <label htmlFor='shopDescription'>Shop Description:</label> */}
                 <input
-                    type='text'
+                    placeholder='Shop Description'
+                    type='Description'
                     value={shopDescription}
                     onChange={(event) => setShopDescription(event.target.value)}
                 />
-                <label htmlFor='profilePic'>Profile Picture:</label>
+                {/* <label htmlFor='profilePic'>Profile Picture:</label> */}
                 <input
-                    type='text'
+                    placeholder='Profile Picture'
+                    type='ProfilePic'
                     value={profilePic}
                     onChange={(event) => setProfilePic(event.target.value)}
                 />
-                <label htmlFor='shopLocation'>Shop Location:</label>
+                {/* <label htmlFor='shopLocation'>Shop Location:</label> */}
                 <input
-                    type='text'
+                    placeholder='Shop Location'
+                    type='location'
                     value={shopLocation}
                     onChange={(event) => setShopLocation(event.target.value)}
                 />
-                <label htmlFor='shopHero'>Shop Hero:</label>
+                {/* <label htmlFor='shopHero'>Shop Hero:</label> */}
                 <input
-                    type='text'
+                    placeholder='Shop Hero'
+                    type='hero'
                     value={shopHero}
                     onChange={(event) => setShopHero(event.target.value)}
                 />
                 {/* <div className="flex-row flex-end">
         <button type='submit' >Create Shop</button>
       </div> */}
-                <Link to="/shop/:id" className='close-modal'>Create Shop</Link>
+                <Link to="/shop/:id" className='create-shop-button'>Create Shop</Link>
             </form>
     );
 }
