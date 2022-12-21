@@ -11,14 +11,17 @@ export const LOGIN = gql`
     }
 `;
 
-// export const UPDATESHOP = updateShop($shopId: ID!, $shopDescription: String, $shopTitle: String) {
-//     updateShop(shopId: $shopId, shopDescription: $shopDescription, shopTitle: $shopTitle) {
-//       _id
-//       shopDescription
-//       shopHero
-//       shopLocation
-//       shopTitle
-//     }
+export const UPDATE_SHOP = gql `
+    mutation updateShop($shopId: ID!, $shopDescription: String, $shopTitle: String) {
+        updateShop(shopId: $shopId, shopDescription: $shopDescription, shopTitle: $shopTitle) {
+            _id
+            shopTitle
+            shopDescription
+            shopLocation
+        shopHero
+    }
+}
+`;
 
 export const ADD_SHOP = gql`
 mutation AddShop(
@@ -38,35 +41,55 @@ mutation AddShop(
 `;
 
 export const ADD_ORDER = gql`
-  mutation addOrder($products: [ID]!) {
-    addOrder(products: $products) {
-      purchaseDate
-      products {
+    mutation addOrder($products: [ID]!) {
+        addOrder(products: $products) {
         _id
-        name
-        description
-        price
-        quantity
-        category {
-          name
+         datePurchased
+         products {
+            _id
+            productName
+            productImage
+            productDescription
+            price
+            category {
+                categoryName
+            }
         }
-      }
+    }
+}
+`;
+
+export const DELETE_ORDER = gql `
+ mutation deleteOrder ($orderId: ID!) {
+    deleteOrder(orderId: $orderId) {
+      _id
     }
   }
 `;
 
 export const ADD_PRODUCT = gql`
-    mutation addProduct($products: [ID]!) {
-        addProduct(products: $products) {
-            products {
-                _id
-                name
-                description
-                price
-                category {
-                    name
-                }
-            }
+    mutation addProduct($shopId: ID!, $productName: String!, $productDescription: String!, $price: Float!, $productImage: String) {
+        addProduct(shopId: $shopId, productName: $productName, productDescription: $productDescription, price: $price, productImage: $productImage) {
+         _id
+        productName
+        productImage
+        productDescription
+        price
+        category {
+            categoryName
+        }
+    }
+}
+`;
+
+export const DELETE_PRODUCT = gql`
+    mutation deleteProduct ($shopId: ID!, $productId: ID!) {
+        deleteProduct(shopId: $shopId, productId: $productId) {
+          _id
+          productName
+          productImage
+          productDescription
+          price
         }
     }
 `;

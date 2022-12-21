@@ -1,4 +1,5 @@
 const { AuthenticationError } = require("apollo-server-express");
+
 const { User, Shop, Product, Order } = require("../models");
 const { signToken } = require("../utils/auth");
 
@@ -47,8 +48,27 @@ const resolvers = {
             return User.findOne({ username })
                 .select('-__V -password')
         },
+        categories: async () => {
+            return await Category.find();
+        },
+        products: async (parent, { category, name }) => {
+            const params = {};
+
+            if (category) {
+                params.category = category;
+            }
+
+            if (name) {
+                params.name = {
+                    $regex: name
+                };
+            }
+            return await Product.find(params)
+                .populate('category');
+        },
         product: async (parent, { _id }) => {
-            return Product.findById(_id)
+            return await Product.findById(_id)
+                .populate('category');
         },
         products: async (parent, args, context, info) => {
             const query = {};

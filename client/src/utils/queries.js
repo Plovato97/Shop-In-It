@@ -18,90 +18,107 @@ export const QUERY_ALL_PRODUCTS = gql`
   {
     products {
       _id
-      name
-      description
+      productName
+      productDescription
       price
-      quantity
       category {
-        name
+        categoryName
       }
     }
   }
 `;
 
 export const QUERY_USER = gql`
-query User($username: String!) {
-  user(username: $username) {
-    username
-    email
+{
+  me {
     _id
+    email
+    username
+  }
+}
+`;
+
+export const QUERY_ME = gql`
+{
+  me {
+    _id
+    email
+    username
     orders {
       _id
       datePurchased
+      products {
+        _id
+        productName
+        productImage
+        productDescription
+        price
+        shopId
+      }
+    }
+    shop {
+      _id
+      shopTitle
+      shopLocation
+      shopHero
+      shopDescription
       products {
         productName
         productImage
         productDescription
         price
         _id
-      }
-    }
-    shop {
-      shopTitle
-      shopLocation
-      shopHero
-      shopDescription
-      profilePic
-      _id
-      products {
-        _id
-        productName
-        productDescription
-        productImage
       }
     }
   }
 }
 `;
 
-export const QUERY_ME = gql`
-    query me {  
+export const QUERY_SHOP = gql`
+{
+  me {
+    shop {
+      _id
+      shopTitle
+      shopDescription
+      shopLocation
+      shopHero
+      profilePic
+    }
+  }
+}
+`;
+
+export const QUERY_SHOP_PRODUCTS = gql`
+{
+  me {
     _id
-    username
-    email
+    shop {
+      products {
+        productName
+        productDescription
+        price
+        _id
+      }
+    }
+  }
+}
+`;
+
+export const QUERY_ORDERS = gql `
+{
+  me {
     orders {
       _id
       datePurchased
       products {
         _id
         productName
-        productDescription
         productImage
-        price
-      }
-    }
-    shop {
-      _id
-      shopTitle
-      shopDescription
-      shopHero
-      shopLocation
-      profilePic
-      products {
-        _id
-        productName
         productDescription
-        productImage
         price
       }
     }
   }
-`
-
-export const QUERY_CHECKOUT = gql`
-  query getCheckout($products: [ID]!) {
-    checkout(products: $products) {
-      session
-    }
-  }
+}
 `;
