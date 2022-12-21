@@ -40,7 +40,7 @@ body.active-modal {
     left: 50%;
     transform: translate(-50%, -50%);
     line-height: 1.4;
-    background: #f1f1f1;
+    background: #DCDCDC;
     padding: 14px 28px;
     border-radius: 3px;
     width: 50vw;
@@ -58,7 +58,7 @@ body.active-modal {
     left: 50%;
     transform: translate(-50%, -50%);
     line-height: 1.4;
-    background: #f1f1f1;
+    background: #DCDCDC;
     padding: 14px 28px;
     border-radius: 3px;
     width: 50vw;
