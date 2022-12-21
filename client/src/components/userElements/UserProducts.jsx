@@ -10,7 +10,7 @@ const UserProducts = () => {
         <ProductCard></ProductCard>
 
         <div className='settings'>
-        {/* <Tooltip  */}
+        {/* <Tooltip  *
             title="Welcome to React"
             position="top"
             trigger="click"

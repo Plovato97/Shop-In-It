@@ -20,17 +20,17 @@ const NavShopCar = () => {
       if (Auth.loggedIn()) {
 
           return (
-               <ul className='flex-row-a'>
-                  <li className='mx-1'>
+               <ul className='flex-row-b'>
+                  <li className='mx-2'>
+                    <a href='/' onClick={() => Auth.logout()}>Logout</a>
+                  </li>
+                  <li className='mx-2'>
+                      <Link to='/orderHistory'>Order History</Link>
+                  </li>
+                  <li className='mx-2'>
                     <Link to='/user'>
                     <i class="fa-solid fa-user"></i>
                     </Link>
-                  </li>
-                  <li className='mx-1'>
-                      <Link to='/orderHistory'>Order History</Link>
-                  </li>
-                  <li className='mx-1'>
-                      <a href='/' onClick={() => Auth.logout()}>Logout</a>
                   </li>
                </ul>
           );

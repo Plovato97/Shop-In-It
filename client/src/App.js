@@ -63,15 +63,6 @@ function App() {
           <Route path='/cart' element={<Cart />}></Route>
           {/* <Route path='/postProduct' element={<ProductPage />} /> */}
         </Routes>
-        <div>
-          <HeroTop />
-          <Categories />
-          <Hero />
-          <div className='products'>
-            {Products.map((product) => <Product data={product} key={product.id} />)}
-          </div>
-        </div>
-
         {/* <div className="container">
           <LoadAllProducts />
         </div>
