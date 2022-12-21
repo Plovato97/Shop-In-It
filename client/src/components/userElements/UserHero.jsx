@@ -1,5 +1,5 @@
 import React from 'react'
-// import '../../userPage/index.css'
+import '../../userPage/index.css'
 
 const UserHero = () => {
   return (
