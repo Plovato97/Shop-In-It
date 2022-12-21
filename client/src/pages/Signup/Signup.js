@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
-import Auth from '../utils/auth';
-import { ADD_USER } from '../utils/mutations';
+import Auth from '../../utils/auth';
+import { ADD_USER } from '../../utils/mutations';
+import './Signup.css';
 
 function Signup(props) {
+    //Sign in Function
     const [formState, setFormState] = useState({username: '', email: '', password: '' });
     const [addUser] = useMutation(ADD_USER);
 
@@ -29,14 +31,29 @@ function Signup(props) {
         });
     };
 
-    return (
-        <div className='container my-1'>
-            <Link to="/login">Testing Login</Link>
+    // Modal Function
+    const [modal, setModal] = useState(false);
 
+    const toggleModal = () => {
+        setModal(!modal)
+    };
+
+    if(modal) {
+        document.body.classList.add('active-modal')
+      } else {
+        document.body.classList.remove('active-modal')
+      }
+
+    return (
+    <>
+        <div className='container my-1'>
+            <Link to='/login'>Login</Link>
+
+            
+            <form onSubmit={handleFormSubmit} className='modal-content-s'>
             <h2>Sign Up</h2>
-            <form onSubmit={handleFormSubmit}>
-                <div className='flex-row space-between my-2'>
-                    <label htmlFor='username'>Username</label>
+                <div className='flex-row space-between my-2 user'>
+                    {/* <label htmlFor='username'>Username</label> */}
                     <input 
                         placeholder='Username'
                         name='username'
@@ -45,8 +62,8 @@ function Signup(props) {
                         onChange={handleChange} 
                     />
                 </div>
-                <div className="flex-row space-between my-2">
-                    <label htmlFor="email">Email:</label>
+                <div className="flex-row space-between my-2 user">
+                    {/* <label htmlFor="email">Email:</label> */}
                     <input
                         placeholder="youremail@test.com"
                         name="email"
@@ -55,10 +72,10 @@ function Signup(props) {
                         onChange={handleChange}
                     />
                 </div>
-                <div className="flex-row space-between my-2">
-                    <label htmlFor="pwd">Password:</label>
+                <div className="flex-row space-between my-2 user">
+                    {/* <label htmlFor="pwd">Password:</label> */}
                     <input
-                        placeholder="******"
+                        placeholder="Password"
                         name="password"
                         type="password"
                         id="pwd"
@@ -66,10 +83,14 @@ function Signup(props) {
                     />
                 </div>
                 <div className="flex-row flex-end">
-                    <button type="submit">Submit</button>
+                    <button type="submit" className='submit-btn'>Submit</button>
                 </div>
+                
+                  <Link to='/' className='close-modal'>Close</Link>
+                 
             </form>
         </div>
+    </>
     );
 };
 
