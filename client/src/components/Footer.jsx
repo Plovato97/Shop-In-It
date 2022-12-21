@@ -6,7 +6,7 @@ const Footer = () => {
         <div>
           <div>
             <p>
-            Designed & Built by Paul Lovato, Hector Guerrero, Benny Le, Raenique Walters, & Johan Herrera
+            Designed & Built by <a href="https://github.com/Plovato97">Paul Lovato</a>, <a href="https://github.com/H-meister">Hector Guerrero</a>, <a href="https://github.com/bennyle890">Benny Le</a>, <a href="https://github.com/Raenique27">Raenique Walters</a>, & <a href="https://github.com/Johanh0">Johan Herrera</a>.
             </p>
           </div>
         </div>
