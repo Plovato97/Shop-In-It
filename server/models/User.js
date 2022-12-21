@@ -17,7 +17,18 @@ const userSchema = new Schema(
     password: {
       type: String,
       required: true,
+      minlength: 5
     },
+    orders: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Order'
+      }
+    ],
+    shop: {
+      type: Schema.Types.ObjectId,
+      ref: 'Shop'
+    }
   },
   // set this to use virtual below
   {

@@ -1,0 +1,31 @@
+#featured-products {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 95%;
+    margin: 25px auto;
+
+    .products-subtitle {
+        text-align: center;
+
+        h2 {
+            font-size: map-get($font-size, subtitle );
+        }
+
+        p {
+            font-size: map-get($font-size, paragraph );
+        }
+    }
+
+    .products-cards_container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 20px;
+        width: 100%;
+        height: fit-content;
+        margin-top: 25px;
+    }
+}

@@ -1,0 +1,41 @@
+#nav-mobile {
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 15px 35px;
+    top: 0;
+    z-index: 10;
+    background-color: map-get($colors, off-white );
+    border-bottom: 1px solid map-get($colors, gray-color );
+    font-size: map-get($font-size, paragraph );
+    box-shadow: $box-shadow;
+
+    .logo {
+        font-size: map-get($font-size, subtitle );
+        color: map-get($colors, primary-color )
+    }
+
+    .nav-links {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        gap: 50px;
+        font-size: 2.5rem;
+
+        i {
+            cursor: pointer;
+        }
+
+        .fa-magnifying-glass, .fa-user {
+            display: none;
+        }
+
+        .nav-shopCar_container {
+            @include NavShopCar;
+        }
+    }
+
+    
+}

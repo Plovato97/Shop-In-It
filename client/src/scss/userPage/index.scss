@@ -1,0 +1,16 @@
+// Sass Logic Styles
+@import '../var';
+@import '../mixins';
+
+// Global Styles
+@import '../global';
+
+// Mobile First Styles
+@import '../Mobile/navMobile';
+@import '../Mobile/navBar';
+
+@import './userHero';
+@import './userProducts';
+
+// Responsive Desktop
+@import '../responsive';
