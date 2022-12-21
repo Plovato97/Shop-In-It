@@ -15,7 +15,8 @@ import { setContext } from '@apollo/client/link/context';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup/Signup';
-// import { StoreProvider } from './utils/GlobalState';
+import Cart from './pages/CartPage/Cart';
+import UserPage from './pages/UserPage';
 import Nav from './components/Nav';
 // import ProductPage from './components/ProductPost';
 import { Products } from './pages/Products';
@@ -29,6 +30,7 @@ import Shop from './pages/Shop';
 
 // import LoadAllProducts from './pages/loadAllProducts';
 
+// import 'react-tippy/dist/tippy.css';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -72,23 +74,16 @@ function App() {
           <Route path='/' element={<Home />}></Route>
           <Route path='/login' element={<Login />}></Route>
           <Route path='/signup' element={<Signup />}></Route>
+          <Route path='/user' element={<UserPage />}></Route>
+          <Route path='/cart' element={<Cart />}></Route>
           <Route path='/create-shop' element={<AddShop />}></Route>
           <Route path="/shop/:id" element={<Shop/>}></Route>
           {/* <Route path='/postProduct' element={<ProductPage />} /> */}
         </Routes>
-        <div>
-          <HeroTop />
-          <Categories />
-          <Hero />
-          <div className='products'>
-            {Products.map((product) => <Product data={product} key={product.id} />)}
-          </div>
+        {/* <div className="container">
+          <LoadAllProducts />
         </div>
-
-        <div className="container">
-          {/* <LoadAllProducts /> */}
-        </div>
-        <NavBarMobile></NavBarMobile>
+        <NavBarMobile></NavBarMobile> */}
       </Router>
     </ApolloProvider>
   );

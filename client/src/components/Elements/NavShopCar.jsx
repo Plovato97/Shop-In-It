@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { NavShopCell } from "./NavShopCell"
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import Auth from '../../utils/auth';
 import './NavShop.css';
 
@@ -16,17 +16,35 @@ const NavShopCar = () => {
         }
     }
 
+    const location = useLocation();
+    const shopId = location.pathname.split('/');
+
     function showNavigation() {
       if (Auth.loggedIn()) {
 
           return (
-               <ul className='flex-row'>
-                  <li className='mx-1'>
+               <ul className='flex-row-b'>
+                  <li className='mx-2'>
+                    <a href='/' onClick={() => Auth.logout()}>Logout</a>
+                  </li>
+                  <li className='mx-2'>
+                    <Link to="/create-shop">Create Shop </Link>
+                  </li>
+                  <li className='mx-2'>
+                  <Link to={`/shop/${shopId}`}>
+                         My Shop
+                    </Link>
+                  </li>
+                  <li className='mx-2'>
                       <Link to='/orderHistory'>Order History</Link>
                   </li>
-                  <li className='mx-1'>
-                      <a href='/' onClick={() => Auth.logout()}>Logout</a>
+                  <li className='mx-2'>
+                    <Link to='/user'>
+                    <i class="fa-solid fa-user"></i>
+                    </Link>
                   </li>
+                  
+
                </ul>
           );
       } else {
@@ -50,7 +68,9 @@ const NavShopCar = () => {
     <div>
       <div className='nav-shopCar_container'>
         <div className='nav-shopCar-icon'>
-          <i className="fa-solid fa-cart-shopping"></i>
+          <Link to='/cart'>
+            <i className="fa-solid fa-cart-shopping"></i>
+          </Link>
           <span className='nav-shopCar-count'>1</span>
         </div>
 

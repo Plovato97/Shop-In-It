@@ -1,0 +1,35 @@
+#user-hero {
+    position: relative;
+    margin: 150px auto 0;
+    width: 90%;
+    height: 500px;
+    background-color: map-get($colors, soft-blue );
+    border-radius: 25px;
+    box-shadow: $box-shadow;
+
+
+    .user-img-cover {
+        width: 100%;
+        height: 100%;
+        border-radius: 25px;
+        object-fit: cover;
+    }
+
+    .user-photo {
+        position: absolute;
+        width: 250px;
+        height: 250px;
+        background-color: map-get($colors, off-white );
+        border-radius: 50%;
+        bottom: -60px;
+        left: 50px;
+        box-shadow: $box-shadow;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+    }
+}

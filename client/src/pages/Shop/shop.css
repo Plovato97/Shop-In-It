@@ -1,0 +1,114 @@
+/* Shop Title */
+
+input[type=title] {
+    background-color: transparent;
+    border: 0.125em solid #3EB2FD;
+    padding: 12px 20px;
+    border-radius: 4px;
+    font-weight: 100;
+    font-size: 1.5rem;
+    color: #3EB2FD;
+    margin: 5px;
+}
+
+input[type=title]:hover {
+    border: 0.125em solid #4F58FD;
+    transition: .5s ease-in;
+}
+
+/* Shop Description */
+
+input[type=Description] {
+    background-color: transparent;
+    border: 0.125em solid #3EB2FD;
+    padding: 12px 20px;
+    border-radius: 4px;
+    font-weight: 100;
+    font-size: 1.5rem;
+    color: #3EB2FD;
+    margin: 5px;
+}
+
+input[type=Description]:hover {
+    border: 0.125em solid #4F58FD;
+    transition: .5s ease-in;
+}
+
+/* Profile Pic */
+
+input[type=ProfilePic] {
+    background-color: transparent;
+    border: 0.125em solid #3EB2FD;
+    padding: 12px 20px;
+    border-radius: 4px;
+    font-weight: 100;
+    font-size: 1.5rem;
+    color: #3EB2FD;
+    margin: 5px;
+}
+
+input[type=ProfilePic]:hover {
+    border: 0.125em solid #4F58FD;
+    transition: .5s ease-in;
+}
+
+/* Shop Location */
+
+input[type=location] {
+    background-color: transparent;
+    border: 0.125em solid #3EB2FD;
+    padding: 12px 20px;
+    border-radius: 4px;
+    font-weight: 100;
+    font-size: 1.5rem;
+    color: #3EB2FD;
+    margin: 5px;
+}
+
+input[type=location]:hover {
+    border: 0.125em solid #4F58FD;
+    transition: .5s ease-in;
+}
+
+/* Shop Hero  */
+
+input[type=hero] {
+    background-color: transparent;
+    border: 0.125em solid #3EB2FD;
+    padding: 12px 20px;
+    border-radius: 4px;
+    font-weight: 100;
+    font-size: 1.5rem;
+    color: #3EB2FD;
+    margin: 5px;
+}
+
+input[type=hero]:hover {
+    border: 0.125em solid #4F58FD;
+    transition: .5s ease-in;
+}
+
+.create-shop-button {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    font-size: 30px;
+}
+
+.modal-content-w {
+    position: absolute;
+    box-shadow: 8px 10px 50px -8px rgba(0, 0, 0, 0.1);
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 1.4;
+    background: #DCDCDC;
+    padding: 14px 28px;
+    border-radius: 3px;
+    width: 50vw;
+    height: 38vh;
+    margin-top: 30px;
+    z-index: 6;
+    display: flex;
+    flex-direction: column;
+}

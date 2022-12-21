@@ -1,6 +1,12 @@
 import iphone from '../assets/iphone.jpg';
 import leggings from '../assets/woman-legging.png';
 import jacket from '../assets/men-jacket.jpg';
+import santa from '../assets/santa.jpg';
+import pokemon from '../assets/pokemon.jpg';
+import couch from '../assets/couch.jpeg';
+import lapras from '../assets/lapras.jpg';
+import laptop from '../assets/laptop.png';
+import mugs from '../assets/mugs.jpg';
 
 export const Products = [
     {
@@ -21,4 +27,41 @@ export const Products = [
         price: 89.00,
         productImage: jacket
     },
+    {
+        id: 4,
+        productName: "Pokemon Scarlet & Violet Game",
+        price: 59.99,
+        productImage: pokemon
+    },
+    {
+        id: 5,
+        productName: "Couch",
+        price: 499.99,
+        productImage: couch
+    },
+    {
+        id: 6,
+        productName: "Santa Claus - Seasonal Special",
+        price: 99.99,
+        productImage: santa
+    },
+    {
+        id: 7,
+        productName: "Cute Decorative Kitten Mugs",
+        price: 19.99,
+        productImage: mugs
+    },
+    {
+        id: 8,
+        productName: "Apple Macbook Pro",
+        price: 999.89,
+        productImage: laptop
+    },
+    {
+        id: 9,
+        productName: "4ft Lapras Plushy",
+        price: 15.00,
+        productImage: lapras
+    },
+
 ]

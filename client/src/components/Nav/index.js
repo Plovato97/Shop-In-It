@@ -6,6 +6,7 @@ import Auth from '../../utils/auth';
 function Nav() {
     const location = useLocation();
     const shopId = location.pathname.split('/');
+    
     // Navbar scroll - Javascript
     var prevScrollpos = window.pageYOffset;
     window.onscroll = function () {
@@ -25,7 +26,7 @@ function Nav() {
                     <p className='logo'>Shop 'n It</p>
                 </Link>
                 
-                { Auth.loggedIn() && !shopId && (
+                {/* { Auth.loggedIn() && !shopId && (
                     <Link to="/create-shop">
                        Create Shop 
                     </Link>
@@ -34,7 +35,7 @@ function Nav() {
                     <Link to={`/shop/${shopId}`}>
                          My Shop
                     </Link>
-                )}
+                )} */}
             
 
                 <NavShopCar></NavShopCar>
