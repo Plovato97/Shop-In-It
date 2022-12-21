@@ -84,6 +84,7 @@ function App() {
           <LoadAllProducts />
         </div>
         <NavBarMobile></NavBarMobile> */}
+        <Footer />
       </Router>
     </ApolloProvider>
   );
